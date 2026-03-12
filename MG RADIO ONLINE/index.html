@@ -1,0 +1,169 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MG Radio Online</title>
+<style>
+body{margin:0;font-family:Arial,sans-serif;background:linear-gradient(135deg,#0b1d3a,#000);color:white;overflow-x:hidden;text-align:center;}
+header{padding:40px 20px;background:linear-gradient(135deg,#0b1d3a,#001f4d);box-shadow:0 5px 20px rgba(0,0,0,0.5);}
+.logo{width:160px;height:160px;border-radius:50%;object-fit:cover;margin-bottom:15px;border:3px solid #00dfff;filter:drop-shadow(0 0 20px #ff77aa);}
+h1{margin:0;font-size:clamp(26px,5vw,36px);text-shadow:0 0 10px #00dfff,0 0 20px #ff77aa;}
+.tagline{font-size:16px;text-shadow:0 0 5px #00dfff;}
+.main{padding:40px 20px;}
+.audio-box{background:rgba(0,0,0,0.8);padding:20px;border-radius:20px;display:inline-block;box-shadow:0 0 50px rgba(0,223,255,0.5);width:100%;max-width:500px;}
+audio{width:100%;}
+.equalizer{display:flex;justify-content:center;align-items:flex-end;gap:5px;height:70px;margin-top:15px;}
+.equalizer div{width:6px;background: repeating-linear-gradient(to top,#556B2F,#556B2F 3px,#000000 3px,#000000 6px);height:10px;}
+.nowplaying{margin-top:12px;font-size:14px;color:#F5F5F5;font-weight:bold;text-shadow:none;}
+.live{color:#ff4d4d;font-weight:bold;margin-top:5px;text-shadow:0 0 8px #ff4d4d;}
+.oyentes-box{margin-top:8px;font-size:15px;font-weight:bold;color:#F5FFFA;text-align:center;text-shadow:0 0 8px #F5FFFA,0 0 18px #00dfff;}
+.like-box{margin-top:12px;text-align:center;}
+.like-btn{background:linear-gradient(135deg,#F5FFFA,#F5FFFA);border:none;padding:10px 18px;border-radius:20px;font-size:14px;font-weight:bold;color:#000;cursor:pointer;transition:0.3s;margin:4px;}
+.like-btn:hover{transform:scale(1.08);}
+.like-count{margin-top:6px;font-size:13px;color:#ffcc66;text-shadow:0 0 6px #ffcc66;}
+.historial-box{margin-top:20px;max-width:500px;margin-left:auto;margin-right:auto;font-size:14px;}
+.historial-box ul{list-style:none;padding:0;}
+.historial-box li{background:rgba(0,0,0,0.3);margin:6px 0;padding:8px 12px;border-radius:10px;border:1px solid #00dfff;}
+.socials{margin-top:30px;text-align:center;}
+.socials a{color:#D87093;margin:0 10px;font-size:22px;text-decoration:none;}
+.socials a:hover{color:#ff77aa;}
+.whatsapp-btn{position:fixed;bottom:90px;right:20px;background:#25d366;color:white;border-radius:50%;width:60px;height:60px;display:flex;justify-content:center;align-items:center;font-size:30px;text-decoration:none;box-shadow:0 0 10px rgba(0,0,0,0.5);z-index:1001;}
+footer{background:#000;padding:20px;font-size:13px;opacity:0.7;margin-top:30px;text-align:center;}
+</style>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+<header>
+<img src="logo.png" class="logo">
+<h1>MG Radio Online</h1>
+<p class="tagline">Con la música de los 80, 90 hasta hoy. Diferente y con estilo.</p>
+</header>
+
+<div class="main">
+
+<div class="audio-box">
+
+<h2>🎙️ Escúchanos en Vivo</h2>
+
+<audio id="player" controls autoplay>
+<source src="https://stream.zeno.fm/0m42pr5q4ehvv" type="audio/mpeg">
+</audio>
+
+<div class="live">🔴 EN VIVO</div>
+<div class="oyentes-box">🎧 <span id="oyentes">18</span> personas escuchando ahora</div>
+
+<div class="like-box">
+<button id="likeBtn" class="like-btn">👍 Me gusta </button>
+<button onclick="shareRadio()" class="like-btn">📻 Compartir esta radio</button>
+<div class="like-count">❤️ <span id="likes">0</span> personas les gusta esta radio</div>
+</div>
+
+<div class="equalizer" id="equalizer"></div>
+
+<div class="nowplaying" id="nowPlaying">Cargando canción...</div>
+
+</div>
+
+<div class="historial-box">
+<h3>Últimas canciones:</h3>
+<ul id="listaHistorial"></ul>
+</div>
+
+<div class="socials">
+<a href="https://www.facebook.com/TuPagina" target="_blank"><i class="fab fa-facebook"></i></a>
+<a href="https://www.instagram.com/mgradioonline" target="_blank"><i class="fab fa-instagram"></i></a>
+</div>
+
+<a href="https://wa.me/34624769914" target="_blank" class="whatsapp-btn"><i class="fab fa-whatsapp"></i></a>
+
+<footer>© 2026 MG Radio Online</footer>
+
+<script>
+// Oyentes simulados
+let oyentes=Math.floor(Math.random()*15)+15;
+document.getElementById("oyentes").innerText=oyentes;
+setInterval(()=>{
+    let cambio=Math.floor(Math.random()*5)-2;
+    oyentes+=cambio;
+    if(oyentes<10) oyentes=10;
+    if(oyentes>60) oyentes=60;
+    document.getElementById("oyentes").innerText=oyentes;
+},8000);
+
+// Likes
+let likes=localStorage.getItem("radioLikes")||0;
+document.getElementById("likes").innerText=likes;
+document.getElementById("likeBtn").onclick=function(){
+    likes++;
+    localStorage.setItem("radioLikes",likes);
+    document.getElementById("likes").innerText=likes;
+};
+
+// Compartir
+function shareRadio(){
+    let url=window.location.href;
+    navigator.clipboard.writeText(url);
+    alert("📻 Enlace copiado para compartir la radio");
+}
+
+// Equalizador suavizado
+const eqContainer=document.getElementById("equalizer");
+let bars=[];
+for(let i=0;i<30;i++){
+    let bar=document.createElement("div");
+    eqContainer.appendChild(bar);
+    bars.push(bar);
+}
+let eqInterval=null;
+function animateEQ(){
+    bars.forEach(bar=>{
+        const prevHeight=parseFloat(bar.style.height)||10;
+        const targetHeight=Math.random()*50+10;
+        bar.style.height = prevHeight + (targetHeight-prevHeight)*0.1 + "px"; // más suave
+    });
+}
+function startEQ(){if(!eqInterval) eqInterval=setInterval(animateEQ,200);} // más lento
+function stopEQ(){
+    if(eqInterval) clearInterval(eqInterval);
+    eqInterval=null;
+    const fallInterval=setInterval(()=>{
+        let stopFall=true;
+        bars.forEach(bar=>{
+            let h=parseFloat(bar.style.height)||10;
+            let newH=h-2;
+            if(newH>10){bar.style.height=newH+"px"; stopFall=false;}
+            else bar.style.height="10px";
+        });
+        if(stopFall) clearInterval(fallInterval);
+    },50);
+}
+const audio=document.getElementById("player");
+audio.addEventListener("play",startEQ);
+audio.addEventListener("pause",stopEQ);
+
+// Metadatos Zeno con "Al aire:"
+let historialCanciones=[];
+const lista=document.getElementById("listaHistorial");
+
+const source = new EventSource("https://api.zeno.fm/mounts/metadata/subscribe/0m42pr5q4ehvv");
+source.onmessage = function(event){
+    try{
+        const data = JSON.parse(event.data);
+        if(data.streamTitle){
+            const texto=data.streamTitle;
+            document.getElementById("nowPlaying").innerHTML="Al aire: " + texto;
+            if(historialCanciones.length===0 || historialCanciones[0]!==texto){
+                historialCanciones.unshift(texto);
+                if(historialCanciones.length>10) historialCanciones.pop();
+                lista.innerHTML = historialCanciones.map(c=>`<li>🎵 ${c}</li>`).join("");
+            }
+        }
+    }catch(e){console.log("metadata error");}
+};
+</script>
+
+</body>
+</html>

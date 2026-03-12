@@ -1,0 +1,128 @@
+﻿<script>
+// oyentes simulados
+let oyentes=Math.floor(Math.random()*15)+15;
+document.getElementById("oyentes").innerText=oyentes;
+setInterval(()=>{
+    let cambio=Math.floor(Math.random()*5)-2;
+    oyentes+=cambio;
+    if(oyentes<10) oyentes=10;
+    if(oyentes>60) oyentes=60;
+    document.getElementById("oyentes").innerText=oyentes;
+},8000);
+
+// likes
+let likes=localStorage.getItem("radioLikes")||0;
+document.getElementById("likes").innerText=likes;
+document.getElementById("likeBtn").onclick=function(){
+    likes++;
+    localStorage.setItem("radioLikes",likes);
+    document.getElementById("likes").innerText=likes;
+};
+
+// compartir
+function shareRadio(){
+    let url=window.location.href;
+    navigator.clipboard.writeText(url);
+    alert("📻 Enlace copiado para compartir la radio");
+}
+
+// bienvenida
+window.addEventListener("load",()=>{
+    const msg=document.getElementById("welcomeMsg");
+    setTimeout(()=>{msg.style.opacity=1;},500);
+    setTimeout(()=>{msg.style.opacity=0;},4500);
+});
+
+// partículas
+const canvas=document.getElementById("particles");
+const ctx=canvas.getContext("2d");
+canvas.width=window.innerWidth;
+canvas.height=window.innerHeight;
+let particles=[];
+for(let i=0;i<60;i++){
+    particles.push({x:Math.random()*canvas.width,y:Math.random()*canvas.height,size:Math.random()*2+1,speedY:Math.random()*0.5+0.2});
+}
+function animateParticles(){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    particles.forEach(p=>{
+        p.y-=p.speedY;
+        if(p.y<0)p.y=canvas.height;
+        ctx.fillStyle="#00dfff";
+        ctx.beginPath();
+        ctx.arc(p.x,p.y,p.size,0,Math.PI*2);
+        ctx.fill();
+    });
+    requestAnimationFrame(animateParticles);
+}
+animateParticles();
+
+// Equalizador
+const eqContainer=document.getElementById("equalizer");
+const numBars=30;
+let bars=[];
+for(let i=0;i<numBars;i++){
+    let bar=document.createElement("div");
+    eqContainer.appendChild(bar);
+    bars.push(bar);
+}
+let eqInterval=null;
+function animateEQ(){
+    bars.forEach(bar=>{
+        const prevHeight=parseFloat(bar.style.height)||10;
+        const targetHeight=Math.random()*50+10;
+        const newHeight=prevHeight + (targetHeight-prevHeight)*0.3;
+        bar.style.height = newHeight + "px";
+    });
+}
+function startEQ(){if(!eqInterval) eqInterval=setInterval(animateEQ,120);}
+function stopEQ(){
+    if(eqInterval) clearInterval(eqInterval);
+    eqInterval=null;
+}
+const audio=document.getElementById("player");
+audio.addEventListener("play",startEQ);
+audio.addEventListener("pause",stopEQ);
+
+// HISTORIAL REAL
+let historialCanciones=[];
+const lista=document.getElementById("listaHistorial");
+
+// METADATOS ZENO
+function actualizarNowPlaying(){
+
+fetch("https://api.zeno.fm/mounts/metadata/subscribe/0m42pr5q4ehvv")
+.then(r=>r.json())
+.then(data=>{
+
+let texto="MG Radio Online";
+
+if(data.streamTitle){
+texto=data.streamTitle;
+}
+
+document.getElementById("nowPlaying").innerHTML="🎵 "+texto;
+
+// historial
+if(historialCanciones.length===0 || historialCanciones[0]!==texto){
+
+historialCanciones.unshift(texto);
+
+if(historialCanciones.length>10){
+historialCanciones.pop();
+}
+
+lista.innerHTML=
+historialCanciones.map(c=>`<li>🎵 ${c}</li>`).join("");
+
+}
+
+})
+.catch(()=>{
+document.getElementById("nowPlaying").innerHTML="🎵 En emisión...";
+});
+
+}
+
+setInterval(actualizarNowPlaying,8000);
+actualizarNowPlaying();
+</script>
