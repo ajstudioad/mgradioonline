@@ -321,6 +321,20 @@ async function updateCurrentSongFeature(raw){
    const album=item.collectionName||'';
    const year=item.releaseDate?new Date(item.releaseDate).getFullYear():'';
    currentSongMeta.textContent=item.artistName+(album?' · '+album:'')+(year?' · '+year:'')+' · Apple Music';
+   // Si existe una reseña editorial verificada, tiene prioridad. Si no, mostramos
+   // los datos comprobables que devuelve el catálogo, sin inventar una anécdota.
+   const matchedReview=Object.entries(songReviews).find(([reviewKey])=>{
+    const parts=reviewKey.split('|');
+    return normalizeMusicText(parts[0])===normalizeMusicText(item.artistName)&&
+      normalizeMusicText(parts.slice(1).join('|'))===normalizeMusicText(item.trackName);
+   })?.[1];
+   if(matchedReview){
+    currentSongReview.textContent=matchedReview;
+   }else{
+    const albumText=album?' aparece en el álbum «'+album+'»':'';
+    const yearText=year?' (ficha del catálogo: '+year+')':'';
+    currentSongReview.textContent='Ficha musical localizada: «'+item.trackName+'», interpretada por '+item.artistName+albumText+yearText+'. Estos datos proceden del catálogo de Apple Music; no hemos encontrado todavía una reseña histórica verificada para este tema.';
+   }
    const matchedStory=songStories.find(story=>
     normalizeMusicText(story.t)===normalizeMusicText(item.trackName)&&artistMatches(item.artistName,story.a)
    );
@@ -331,6 +345,13 @@ async function updateCurrentSongFeature(raw){
     const paragraph=document.createElement('p');
     paragraph.textContent=matchedStory.d;
     storyEl.append(heading,paragraph);
+   }else{
+    storyEl.replaceChildren();
+    const heading=document.createElement('strong');
+    heading.textContent=item.artistName+' · '+item.trackName;
+    const paragraph=document.createElement('p');
+    paragraph.textContent='Tenemos identificados el tema y sus datos de catálogo, pero todavía no una curiosidad histórica contrastada para publicar.';
+    storyEl.append(heading,paragraph);
    }
   }else if(currentReviewToken===key){
    currentSongMeta.textContent=artist+' · Buscando en MusicBrainz…';
@@ -338,16 +359,26 @@ async function updateCurrentSongFeature(raw){
     const mb=await searchMusicBrainz(artist,searchTitle);
     if(mb&&currentReviewToken===key){
      currentSongMeta.textContent=mb.artist+' · '+(mb.album||'Álbum no identificado')+(mb.year?' · '+mb.year:'')+' · MusicBrainz';
+     const knownMbReview=Object.entries(songReviews).find(([reviewKey])=>{
+      const parts=reviewKey.split('|');
+      return normalizeMusicText(parts[0])===normalizeMusicText(mb.artist)&&
+        normalizeMusicText(parts.slice(1).join('|'))===normalizeMusicText(mb.title);
+     })?.[1];
+     currentSongReview.textContent=knownMbReview||('Ficha musical localizada: «'+mb.title+'», interpretada por '+mb.artist+(mb.album?' y asociada al álbum «'+mb.album+'»':'')+(mb.year?' ('+mb.year+')':'')+'. Datos consultados en MusicBrainz. No hemos encontrado todavía una reseña histórica verificada para este tema.');
      if(mb.releaseId)loadMusicBrainzCover(mb.releaseId,key);
     }else if(currentReviewToken===key){
      currentSongMeta.textContent=artist+' · No encontramos una ficha confirmada';
+     currentSongReview.textContent='No hemos encontrado una ficha musical fiable para «'+displayTitle+'». No mostraremos datos ni curiosidades sin poder confirmarlos.';
     }
    }catch(_){
     if(currentReviewToken===key)currentSongMeta.textContent=artist+' · No se pudo consultar la segunda fuente';
    }
   }
  }catch(_){
-  if(currentReviewToken===key)currentSongMeta.textContent=artist+' · No se pudo consultar la ficha musical';
+  if(currentReviewToken===key){
+   currentSongMeta.textContent=artist+' · No se pudo consultar la ficha musical';
+   currentSongReview.textContent='No se pudo completar la consulta de información para «'+displayTitle+'». La canción sigue sonando con normalidad; intentaremos consultar el próximo tema.';
+  }
  }
 }
 function receiveTrack(title){const clean=String(title||'').trim();if(!clean)return;if(clean===currentRaw)return;if(currentRaw&&!isStationBreak(currentRaw)){historyItems=historyItems.filter(x=>x!==currentRaw&&x!==clean);historyItems.unshift(currentRaw);historyItems=historyItems.slice(0,10);}currentRaw=clean;if(!isStationBreak(clean))historyItems=historyItems.filter(x=>x!==clean);nowPlaying.textContent=clean;updateArtwork(clean);updateCurrentSongFeature(clean);try{localStorage.setItem(historyKey,JSON.stringify(historyItems));}catch(_){}renderHistory();}
