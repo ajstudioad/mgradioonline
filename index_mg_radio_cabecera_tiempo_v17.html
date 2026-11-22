@@ -1,0 +1,476 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#d71920">
+<meta name="description" content="MG Radio Online. Música de los 80, 90, 2000 hasta hoy. Diferente y con estilo.">
+<link rel="canonical" href="https://mgradioonlinelive.vercel.app/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_ES">
+<meta property="og:site_name" content="MG Radio Online">
+<meta property="og:title" content="MG Radio Online | Diferente y con estilo">
+<meta property="og:description" content="Los grandes éxitos de los 80, 90, 2000 y hasta hoy. Pop, rock, alternative y baladas. Escúchanos en vivo.">
+<meta property="og:url" content="https://mgradioonlinelive.vercel.app/">
+<meta property="og:image" content="https://mgradioonlinelive.vercel.app/logo.png">
+<meta property="og:image:alt" content="Logo de MG Radio Online">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="MG Radio Online | Diferente y con estilo">
+<meta name="twitter:description" content="Los grandes éxitos de los 80, 90, 2000 y hasta hoy. Escúchanos en vivo.">
+<meta name="twitter:image" content="https://mgradioonlinelive.vercel.app/logo.png">
+<title>MG Radio Online | Diferente y con estilo</title>
+<style>
+:root{--red:#d71920;--red-dark:#b51219;--ink:#202124;--muted:#6b7077;--line:#e8e8e8;--soft:#f6f6f6;--white:#fff;--eq:#202124}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 8% 4%,rgba(82,133,190,.18),transparent 38%),radial-gradient(ellipse at 96% 20%,rgba(215,25,32,.12),transparent 34%),radial-gradient(ellipse at 52% 100%,rgba(72,98,128,.16),transparent 42%),linear-gradient(180deg,#e5e9ee 0%,#d9dfe6 48%,#cfd7e0 100%);color:var(--ink);font-family:Inter,Arial,Helvetica,sans-serif;line-height:1.5}a{color:inherit}.topline{height:6px;background:linear-gradient(90deg,#b51219,#e72b37,#f08b91,#d71920)}.wrap{width:min(1080px,calc(100% - 36px));margin:auto}
+header{position:relative;isolation:isolate;overflow:hidden;padding:14px 0;border-bottom:1px solid rgba(215,25,32,.12);background:linear-gradient(180deg,rgba(255,255,255,.96),rgba(246,249,252,.92));backdrop-filter:blur(10px)}
+.header-content{display:grid;grid-template-columns:minmax(150px,1fr) auto minmax(190px,1fr);align-items:center;gap:16px;min-height:118px}
+.tuner-mini{position:relative;width:250px;height:100px;justify-self:start;border:0;border-radius:0;background:transparent;box-shadow:none;overflow:hidden}
+.tuner-mini:before{content:"";position:absolute;left:10px;right:10px;top:69px;height:3px;border-radius:50%;background:#111111;box-shadow:0 1px 0 rgba(23,107,80,.16)}
+.tuner-mini:after{content:"";position:absolute;left:12px;right:12px;top:48px;height:22px;background:repeating-linear-gradient(90deg,transparent 0 10px,#111111 10px 11px,transparent 11px 15px);opacity:.9}
+.tuner-mini .tuner-fm{display:none}
+.tuner-mini .tuner-numbers{position:absolute;top:10px;left:5px;right:5px;display:grid;grid-template-columns:repeat(10,minmax(0,1fr));align-items:center;color:#111111;font-size:10px;font-weight:850;line-height:1;white-space:nowrap}
+.tuner-mini .tuner-numbers span{position:static;display:block;min-width:0;text-align:center;transform:none;letter-spacing:-.045em}
+.tuner-mini .tuner-needle{position:absolute;left:50%;top:35px;height:43px;width:3px;transform:translateX(-50%);background:#e34b24;border-radius:3px;box-shadow:0 0 0 2px rgba(227,75,36,.12),0 1px 4px rgba(0,0,0,.16);z-index:2}
+.brand{position:relative;z-index:1;display:flex;align-items:center;justify-content:center;gap:16px;text-align:center;min-height:112px}.logo{width:112px;height:112px;object-fit:contain;border-radius:50%;filter:drop-shadow(0 3px 7px rgba(0,0,0,.12))}
+.weather-pair{display:flex;justify-self:end;gap:8px;align-items:stretch}
+.weather-city{min-width:91px;padding:8px 9px;border:1px solid #e8e8e8;border-radius:10px;background:rgba(255,255,255,.88);text-align:center;box-shadow:0 3px 10px rgba(20,20,20,.04)}
+.weather-city strong{display:block;font-size:10px;letter-spacing:.03em;color:#555b62;white-space:nowrap}
+.weather-reading{display:flex;justify-content:center;align-items:center;gap:5px;margin-top:2px}
+.weather-reading b{font-size:21px;line-height:1.1;color:#202124}
+.weather-reading span{font-size:18px}
+.weather-city small{display:block;margin-top:2px;font-size:9px;color:#777e86;white-space:nowrap}
+.weather-status{font-size:9px;color:#777e86;margin-top:2px}
+.brand-copy h1{font-size:clamp(25px,4vw,38px);letter-spacing:.035em;line-height:1.08;margin:0;font-weight:850}.brand-copy p{display:inline-block;margin:8px 0 0;padding:3px 16px;border-radius:18px;background:rgba(215,25,32,.88);color:#fff;font-weight:900;letter-spacing:.13em;text-transform:uppercase;font-size:13px}.brand-copy .format{color:#59636f;font-size:13px;letter-spacing:0;text-transform:none;font-weight:600;margin-top:6px}
+main{padding:34px 0 48px}.hero{text-align:center;margin-bottom:24px}.eyebrow{font-size:11px;color:var(--red);font-weight:800;letter-spacing:.18em;text-transform:uppercase}.hero h2{font-size:clamp(25px,4vw,36px);margin:5px 0 6px;line-height:1.15}.hero p{margin:0;color:var(--muted)}
+.layout{display:grid;grid-template-columns:minmax(210px,.72fr) minmax(390px,1.35fr) minmax(260px,.9fr);gap:18px;align-items:start}.panel{border:1px solid rgba(225,220,220,.9);border-radius:20px;background:rgba(255,255,255,.94);box-shadow:0 16px 42px rgba(40,20,20,.075)}.player-panel{padding:26px}.live-row{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:20px}.live-pill{display:inline-flex;align-items:center;gap:8px;background:#fff1f1;color:var(--red);padding:7px 11px;border-radius:30px;font-size:11px;font-weight:850;letter-spacing:.1em}.dot{width:8px;height:8px;border-radius:50%;background:var(--red);box-shadow:0 0 0 4px #f9dada}.quality{font-size:11px;color:var(--muted)}.listen-title{text-align:center;font-size:20px;margin:0 0 3px}.listen-sub{text-align:center;color:var(--muted);font-size:13px;margin:0 0 18px}.audio-wrap{background:var(--soft);border-radius:14px;padding:18px}.audio-wrap audio{display:block;width:100%;height:42px}.now-title{margin:10px auto 12px;text-align:center;min-height:48px}.now-visual{display:flex;justify-content:center;align-items:center;gap:18px;margin:0 auto 8px;min-height:90px}.track-art{width:88px;height:88px;object-fit:cover;border-radius:12px;display:block;margin:0;box-shadow:0 8px 22px rgba(40,20,20,.16);background:#fff}.now-label{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);font-weight:800}.song{font-size:19px;font-weight:800;margin-top:5px;overflow-wrap:anywhere}.eq{margin:0;width:max-content;max-width:100%;padding:7px 10px;background:rgba(28,32,36,.94);border:1px solid #454b50;border-radius:8px;display:flex;justify-content:center;align-items:flex-end;gap:20px;box-shadow:0 3px 10px rgba(0,0,0,.12)}.vu-channel{display:flex;flex-direction:column;align-items:center;gap:4px;min-width:20px}.vu-label{color:#e0e3e5;font-size:9px;font-weight:900;letter-spacing:.12em}.vu-track{width:13px;height:64px;flex:none;display:flex;flex-direction:column-reverse;gap:1px;align-items:stretch;overflow:hidden;background:#080909;padding:2px;border-radius:2px;border:1px solid #42484d}.vu-track i{display:block;flex:1;min-height:2px;background:#17a34a;opacity:.16;transition:opacity .09s linear,filter .09s linear}.vu-track i:nth-child(n+17):nth-child(-n+20){background:#e5b526}.vu-track i:nth-child(n+21){background:#e52a2a}.vu-track i.on{opacity:1;filter:brightness(1.25);box-shadow:0 0 5px currentColor}.vu-caption{display:none}.eq.playing .vu-track i{transition:opacity .08s linear}@media(prefers-reduced-motion:reduce){.vu-track i{transition:none}}
+.actions{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:22px}.btn{border:1px solid var(--line);background:#fff;border-radius:30px;padding:10px 16px;font-weight:750;font-size:13px;cursor:pointer;display:inline-flex;align-items:center;gap:8px;transition:.18s}.btn:hover{transform:translateY(-1px);border-color:#d5a0a2}.btn.primary{background:var(--red);border-color:var(--red);color:#fff}.btn.primary:hover{background:var(--red-dark)}.btn.active{background:#fff1f1;color:var(--red);border-color:#f0babc}.hint{text-align:center;color:var(--muted);font-size:11px;margin:10px 0 0}
+.history{grid-column:auto;padding:20px;background:#e52b2b;border:0;border-radius:12px;box-shadow:0 14px 34px rgba(120,0,0,.13);color:#fff}.history-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}.history h3{margin:0;font-size:26px;font-weight:900;letter-spacing:.02em;color:#fff}.history small{color:rgba(255,255,255,.85);font-size:12px}.history-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:0}.history-list li{display:grid;grid-template-columns:64px minmax(0,1fr) auto;grid-template-rows:auto auto;column-gap:13px;align-items:center;min-width:0;padding:9px 0;border-bottom:1px solid rgba(255,255,255,.22);background:transparent;border-radius:0;color:#fff;font-size:14px}.history-list li:last-child{border-bottom:0}.history-list .track-cover{grid-column:1;grid-row:1/3;width:64px;height:64px;aspect-ratio:1/1;display:block;object-fit:cover;background:#fff;box-shadow:0 4px 14px rgba(0,0,0,.15);margin:0}.history-list .track-name{grid-column:2;grid-row:1;display:block;color:#fff;font-weight:800;line-height:1.3;overflow-wrap:anywhere}.history-list .track-artist{grid-column:2;grid-row:2;display:block;color:rgba(255,255,255,.92);font-size:13px;line-height:1.35;overflow-wrap:anywhere}.history-list .empty{display:block;color:#fff;padding:12px 0;border:0}.history-list .track-no{display:none}
+.news-panel{padding:18px 16px;background:#fff;border:1px solid rgba(225,220,220,.9);border-radius:12px;box-shadow:0 14px 34px rgba(40,20,20,.07);min-width:0}
+.news-head{background:#d71920;color:#fff;padding:12px 13px;border-radius:8px;margin:-2px -2px 13px}
+.news-head h3{margin:0;font-size:19px;letter-spacing:.04em;font-weight:900}.news-head p{margin:2px 0 0;font-size:9px;letter-spacing:.13em;opacity:.9}
+.news-item{padding:12px 0;border-bottom:1px solid #eee;animation:newsIn .45s ease both}.news-item:last-child{border-bottom:0}.news-kicker{font-size:9px;font-weight:900;letter-spacing:.13em;color:#d71920;text-transform:uppercase}.news-item h4{font-size:14px;line-height:1.25;margin:4px 0 5px;color:#202124}.news-item p{font-size:12px;line-height:1.45;margin:0;color:#555b62}.news-date{font-size:10px;color:#8a8e94;margin-top:6px}.news-foot{font-size:9px;color:#85898e;margin-top:10px;line-height:1.4}.news-foot a{color:#b51219}
+.news-extra{margin-top:14px;padding-top:13px;border-top:1px solid #eee}.news-extra h4{margin:0 0 8px;color:#d71920;font-size:11px;letter-spacing:.12em;text-transform:uppercase}.feature-card{display:grid;grid-template-columns:58px minmax(0,1fr);gap:10px;align-items:center;margin:9px 0 14px}.feature-card img{width:58px;height:58px;object-fit:cover;border-radius:7px;background:#f2f2f2;box-shadow:0 3px 10px #0001}.feature-card strong{display:block;font-size:12px;line-height:1.25;color:#202124}.feature-card small{display:block;color:#d71920;font-size:10px;font-weight:800;margin:2px 0}.feature-card p{font-size:11px;line-height:1.4;color:#555b62;margin:3px 0 0}.story-card{padding:10px 11px;background:#fff5f5;border-left:3px solid #d71920;border-radius:0 7px 7px 0}.story-card strong{font-size:12px;color:#202124}.story-card p{font-size:11px;line-height:1.45;color:#555b62;margin:4px 0 0}
+@keyframes newsIn{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
+.social{display:flex;align-items:center;justify-content:center;gap:17px;margin:28px 0 0}.social a{width:44px;height:44px;border:1px solid var(--line);border-radius:50%;display:grid;place-items:center;text-decoration:none;color:#4b4f54;background:#fff;box-shadow:0 5px 16px rgba(20,20,20,.05);transition:.18s}.social svg{width:20px;height:20px;display:block;fill:currentColor}.social a:hover{border-color:var(--red);color:var(--red);transform:translateY(-2px)}.whatsapp{position:fixed;right:20px;bottom:20px;width:54px;height:54px;border-radius:50%;background:#20bd65;color:white;text-decoration:none;display:grid;place-items:center;font-size:25px;box-shadow:0 8px 24px #0002;z-index:5}.whatsapp:hover{transform:translateY(-2px)}footer{border-top:1px solid var(--line);padding:20px 0 28px;text-align:center;color:var(--muted);font-size:12px}footer strong{color:var(--red)}
+@media(max-width:1050px){.layout{grid-template-columns:minmax(0,1fr) minmax(260px,.8fr)}.news-panel{grid-column:1/-1;grid-row:2;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0 18px}.news-head{grid-column:1/-1}.news-foot{grid-column:1/-1}}@media(max-width:760px){.layout>.player-panel{order:1}.layout>.news-panel{order:2}.layout>.history{order:3}.layout{grid-template-columns:1fr}.news-panel{grid-column:auto;grid-row:auto;display:block}.history{grid-column:auto}.history-list li{grid-template-columns:56px minmax(0,1fr);column-gap:11px;padding:8px 0}.history-list .track-cover{width:56px;height:56px}.track-art{width:96px;height:96px}.header-content{grid-template-columns:1fr auto;gap:8px 12px;min-height:0}.brand{grid-column:1/-1;grid-row:1;gap:10px;min-height:88px}.logo{width:86px;height:86px}.tuner-mini{grid-column:1;grid-row:2;width:178px;height:72px}.weather-pair{grid-column:2;grid-row:2;gap:5px}.weather-city{min-width:82px;padding:6px 5px}.weather-city strong{font-size:9px}.weather-reading b{font-size:18px}.weather-reading span{font-size:15px}.weather-city small{font-size:8px}.player-panel{padding:20px}.history{padding:20px}.history-list{display:flex;flex-direction:column;gap:0}.history h3{font-size:22px}.wrap{width:min(100% - 26px,600px)}main{padding-top:26px}.whatsapp{right:14px;bottom:14px;width:50px;height:50px}}
+@media(max-width:390px){.eq{margin:8px auto 10px;padding:6px 12px;gap:16px}.vu-track{height:58px}.history-list li{grid-template-columns:50px minmax(0,1fr);column-gap:10px}.history-list .track-cover{width:50px;height:50px}.brand{flex-direction:row;text-align:left;gap:8px;padding:4px 0}.logo{width:76px;height:76px}.brand-copy h1{font-size:clamp(20px,6vw,27px)}.brand-copy p{font-size:10px;padding:3px 10px}.brand-copy .format{max-width:240px;font-size:11px}.header-content{gap:7px}.tuner-mini{width:145px;height:62px}.weather-city{min-width:75px;padding:5px 3px}.weather-city strong{font-size:8px}.weather-reading b{font-size:16px}.weather-city small{font-size:7px}.eq{gap:8px 10px;padding:11px 9px}}
+@media(max-width:620px){.now-visual{gap:12px}.track-art{width:76px;height:76px}.vu-track{height:58px}}
+.now-song-card{margin:14px 0 16px;padding:12px 0 14px;border-bottom:1px solid #eee;animation:newsIn .4s ease both}
+.now-song-card .news-kicker{margin-bottom:7px}
+.now-song-row{display:grid;grid-template-columns:68px minmax(0,1fr);gap:10px;align-items:center}
+.now-song-row img{width:68px;height:68px;object-fit:cover;border-radius:8px;background:#f1f1f1;box-shadow:0 3px 10px #0001}
+.now-song-row strong{display:block;font-size:13px;line-height:1.25;color:#202124}
+.now-song-row .song-meta{font-size:10px;color:#d71920;font-weight:800;margin-top:3px}
+.now-song-card p{font-size:11px;line-height:1.45;color:#555b62;margin:8px 0 0}
+.radio-banner{position:relative;isolation:isolate;overflow:hidden;margin:20px 0 0;min-height:126px;border-radius:13px;padding:18px 20px;display:flex;align-items:center;justify-content:space-between;gap:12px;color:#fff;background:radial-gradient(ellipse at 72% 30%,rgba(37,126,190,.48),transparent 42%),linear-gradient(115deg,#071a32 0%,#12345b 48%,#07172b 100%);box-shadow:0 8px 22px rgba(8,24,44,.22);border:1px solid rgba(255,255,255,.2)}
+.radio-banner:before{content:"";position:absolute;inset:0;z-index:-1;opacity:.26;background:repeating-linear-gradient(90deg,transparent 0 13px,rgba(255,255,255,.12) 14px 15px),radial-gradient(ellipse at 18% 100%,#e11b2b 0 2%,transparent 28%)}
+.banner-copy{min-width:0}.banner-kicker{font-size:10px;font-weight:900;letter-spacing:.18em;color:#f5c85c;text-transform:uppercase}.banner-title{font-size:clamp(17px,2.2vw,25px);line-height:1.05;font-weight:950;letter-spacing:-.02em;margin:4px 0}.banner-title em{font-style:normal;color:#ff353d}.banner-years{font-size:clamp(20px,3vw,31px);font-weight:950;color:#ffd15b;letter-spacing:.02em;line-height:1.1}.banner-tag{font-size:12px;font-weight:750;color:#fff;margin-top:4px}.banner-icon{font-size:54px;line-height:1;filter:drop-shadow(0 5px 8px #0008);flex:none}.banner-record{position:absolute;width:92px;height:92px;border-radius:50%;left:-38px;bottom:-48px;border:5px solid #17202b;background:repeating-radial-gradient(circle,#111 0 3px,#30343a 4px 5px);box-shadow:0 0 0 2px #c91d29;opacity:.9;z-index:-1}
+@media(max-width:620px){.radio-banner{min-height:112px;padding:14px 15px}.banner-icon{font-size:42px}.now-song-row{grid-template-columns:60px minmax(0,1fr)}.now-song-row img{width:60px;height:60px}}
+
+@media(max-width:430px){.tuner-mini .tuner-numbers{font-size:6.5px}.weather-pair{gap:4px}.weather-city{min-width:0;width:calc((100vw - 165px)/2);max-width:88px}.weather-city strong{font-size:7px}.weather-city small{font-size:7px}.weather-reading{gap:3px}.weather-reading b{font-size:15px}.weather-reading span{font-size:14px}.tuner-mini{width:136px}}
+
+/* MG Music News - noticias musicales actuales */
+.music-news-live{margin:16px 0 0;padding:14px 16px;border:1px solid rgba(215,25,32,.14);border-radius:15px;background:linear-gradient(135deg,#fff 0%,#f5f6f8 100%);box-shadow:0 9px 22px rgba(30,35,45,.07);position:relative;overflow:hidden}
+.music-news-live:before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:linear-gradient(180deg,#d71920,#f08b91)}
+.music-news-live .music-news-heading{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:3px}
+.music-news-live h3{margin:0;color:#d71920;font-size:13px;letter-spacing:.1em;font-weight:900}
+.music-news-live .news-live-status{font-size:9px;color:#85898e}
+.music-news-live .music-news-intro{margin:0 0 6px;color:#6b7077;font-size:10px}
+.music-news-live .live-news-item{padding:8px 0;border-top:1px solid #e9e9e9}
+.music-news-live .live-news-item:first-child{border-top:0}
+.music-news-live .live-news-source{font-size:8px;letter-spacing:.1em;text-transform:uppercase;color:#d71920;font-weight:800}
+.music-news-live .live-news-item h4{font-size:12px;line-height:1.28;margin:2px 0 3px;color:#202124}
+.music-news-live .live-news-item p{font-size:10px;line-height:1.35;color:#62676e;margin:0}
+.music-news-live .live-news-item a{color:inherit;text-decoration:none}
+.music-news-live .live-news-item a:hover{color:#b51219;text-decoration:underline}
+.music-news-live .live-news-date{display:block;margin-top:3px;font-size:8px;color:#8a8e94}
+.music-news-live .music-news-error{padding:10px 0;color:#6b7077;font-size:10px;line-height:1.45}
+.music-news-content{margin-top:9px;padding:10px 13px;background:rgba(255,255,255,.92);border:1px solid #e6e7e9;border-left:3px solid #d71920;border-radius:10px;box-shadow:0 4px 12px rgba(30,35,45,.045)}
+.music-news-live .music-news-intro{margin:0 0 5px;color:#6b7077;font-size:10px}
+.music-news-content .live-news-item{padding:9px 0;border-top:1px solid #ececee}
+.music-news-content .live-news-item:first-child{border-top:0}
+@media(max-width:760px){.music-news-content{padding:10px 11px}}
+
+</style>
+</head>
+<body>
+<div class="topline"></div>
+<header>
+<div class="wrap header-content">
+<div class="tuner-mini" aria-label="Sintonizador FM decorativo"><span class="tuner-fm">FM</span><div class="tuner-numbers"><span>88.5</span><span>90</span><span>92</span><span>94</span><span>96</span><span>98</span><span>100</span><span>102</span><span>104</span><span>107</span></div><span class="tuner-needle"></span></div>
+<div class="brand">
+<img class="logo" src="logo.png" alt="Logo MG Radio Online">
+<div class="brand-copy"><h1>MG RADIO ONLINE</h1><p>Diferente y con estilo</p><div class="format">Los grandes éxitos de los 80, 90, 2000 y hasta hoy</div></div>
+</div>
+<div class="weather-pair" aria-label="Tiempo en Elche y Mene Grande">
+<div class="weather-city" id="weatherElche"><strong>🇪🇸 ELCHE</strong><div class="weather-reading"><b>--°</b><span>⌁</span></div><small>Cargando tiempo</small><div class="weather-status">Actualiza cada 15 min</div></div>
+<div class="weather-city" id="weatherMeneGrande"><strong>🇻🇪 MENE GRANDE</strong><div class="weather-reading"><b>--°</b><span>⌁</span></div><small>Cargando tiempo</small><div class="weather-status">Actualiza cada 15 min</div></div>
+</div>
+</div></header>
+<main class="wrap">
+<section class="hero"><div class="eyebrow">Tu música, tu compañía</div><h2>La música que deja huella</h2><p>Pop · Rock · Alternative · Baladas</p></section>
+<div class="layout">
+<aside class="news-panel" aria-label="MG Music News"><div class="news-head"><h3>MG MUSIC NEWS</h3><p>EFEMÉRIDES · CURIOSIDADES · HISTORIA</p></div><div id="newsItems" aria-live="polite"><article class="news-item"><div class="news-kicker">Cargando contenido musical</div><h4>Un momento en la historia de la música</h4><p>Preparando las noticias y curiosidades de MG Radio Online.</p></article></div><section class="now-song-card" id="currentSongFeature" aria-live="polite"><div class="news-kicker">AHORA SUENA EN MG RADIO</div><div class="now-song-row"><img id="currentSongCover" src="logo.png" alt="Portada de la canción actual"><div><strong id="currentSongTitle">Esperando la canción en directo…</strong><div class="song-meta" id="currentSongMeta">MG Radio Online · 103.9 FM</div></div></div><p id="currentSongReview">Cuando Zeno envíe los datos del próximo tema, aquí aparecerá su portada y una breve reseña musical.</p></section><div class="news-extra"><h4>EL ÁLBUM DESTACADO</h4><div id="albumFeature" class="feature-card"><img src="logo.png" alt="MG Radio Online"><div><strong>Grandes discos del pop y rock</strong><small>80 · 90 · 2000</small><p>Preparando selección musical.</p></div></div><h4>LA CANCIÓN TIENE HISTORIA</h4><div id="songStory" class="story-card"><strong>Historias detrás de los grandes temas</strong><p>Muy pronto, más curiosidades musicales.</p></div></div><div class="news-foot">Efemérides verificadas y curiosidades musicales. <a href="https://www.thisdayinmusic.com/" target="_blank" rel="noopener">Fuente de consulta</a></div></aside>
+<section class="panel player-panel" aria-label="Reproductor de radio">
+<div class="live-row"><span class="live-pill"><span class="dot"></span> EN DIRECTO</span><span class="quality">MG Radio Online · 103.9 FM</span></div>
+<h2 class="listen-title">Escúchanos en vivo</h2><p class="listen-sub">Dale al play y disfruta de la mejor selección musical</p>
+<div class="audio-wrap"><audio id="player" controls preload="none" playsinline><source src="https://stream.zeno.fm/0m42pr5q4ehvv" type="audio/mpeg">Tu navegador no admite audio HTML5.</audio></div>
+<div class="now-title"><div class="now-label">Ahora suena</div><div class="song" id="nowPlaying" aria-live="polite">Conectando con la emisora…</div></div>
+<div class="now-visual"><img class="track-art" id="trackArt" src="logo.png" alt="Portada del álbum; se muestra el logo de MG Radio Online cuando no hay carátula disponible"><div class="eq" id="equalizer" aria-label="Medidores de audio estéreo"><div class="vu-channel" id="vuLeft"><span class="vu-label">L</span><div class="vu-track" id="vuTrackL"></div></div><div class="vu-channel" id="vuRight"><span class="vu-label">R</span><div class="vu-track" id="vuTrackR"></div></div><div class="vu-caption">VU meters · estéreo</div></div></div>
+<div class="actions"><button class="btn" id="likeBtn" type="button" aria-pressed="false">♡ Me gusta</button><button class="btn primary" id="shareBtn" type="button">↗ Compartir radio</button></div>
+<p class="hint" id="likeHint">Tu apoyo se guarda en este dispositivo.</p>
+<div class="radio-banner" role="img" aria-label="MG Radio Online 103.9 FM, lo mejor de los 80, 90, 2000 y hasta hoy"><div class="banner-record"></div><div class="banner-copy"><div class="banner-kicker">Tu banda sonora, siempre</div><div class="banner-title">MG RADIO ONLINE <em>103.9 FM</em></div><div class="banner-years">80s · 90s · 2000</div><div class="banner-tag">Y hasta hoy · DIFERENTE Y CON ESTILO</div></div><div class="banner-icon" aria-hidden="true">🎙️</div></div>
+<section class="music-news-live" aria-label="Noticias musicales actuales">
+ <div class="music-news-heading"><h3>LO ÚLTIMO EN MÚSICA</h3><span class="news-live-status" id="musicNewsStatus">Buscando noticias…</span></div>
+ <div class="music-news-content">
+  <p class="music-news-intro">Noticias musicales en español · Pop, rock y actualidad.</p>
+  <div id="musicNewsLiveItems" aria-live="polite">
+   <div class="music-news-error">Cargando las últimas noticias musicales…</div>
+  </div>
+ </div>
+</section>
+</section>
+<section class="panel history" aria-label="Canciones que han sonado"><div class="history-head"><h3>HAN SONADO</h3><small>Las últimas 10 canciones</small></div><ul class="history-list" id="listaHistorial"><li class="empty">Esperando información musical de Zeno…</li></ul></section>
+</div>
+<nav class="social" aria-label="Redes sociales"><a href="https://www.instagram.com/mgradioonline" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.8 2h8.4A5.8 5.8 0 0 1 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8A5.8 5.8 0 0 1 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2zm0 2A3.8 3.8 0 0 0 4 7.8v8.4A3.8 3.8 0 0 0 7.8 20h8.4a3.8 3.8 0 0 0 3.8-3.8V7.8A3.8 3.8 0 0 0 16.2 4H7.8zm4.2 3a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6zm5.2-3.5a1.2 1.2 0 1 1 0 2.4 1.2 1.2 0 0 1 0-2.4z"/></svg></a><a href="https://www.facebook.com/TuPagina" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 22v-8.9h3l.45-3.48H13.5V7.4c0-1.01.28-1.7 1.73-1.7h1.85V2.58A24 24 0 0 0 14.38 2c-2.68 0-4.52 1.64-4.52 4.66v2.97H6.82v3.48h3.04V22h3.64z"/></svg></a><a href="https://wa.me/34624769914" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 3.5A11.8 11.8 0 0 0 2 17.7L.5 23.5l5.95-1.56A11.8 11.8 0 0 0 20.5 3.5zM12 21a9.7 9.7 0 0 1-4.95-1.36l-.35-.2-3.53.93.94-3.44-.23-.36A9.7 9.7 0 1 1 12 21zm5.33-7.27c-.29-.15-1.7-.84-1.96-.94-.26-.1-.45-.15-.64.15-.19.29-.74.94-.9 1.13-.17.2-.33.22-.62.07-.29-.15-1.22-.45-2.33-1.43-.86-.76-1.44-1.7-1.61-1.99-.17-.29-.02-.45.13-.6.13-.13.29-.34.44-.5.14-.17.19-.29.29-.49.1-.2.05-.37-.02-.52-.07-.15-.64-1.55-.88-2.13-.23-.56-.47-.48-.64-.49h-.55c-.2 0-.52.07-.79.37-.27.29-1.03 1.01-1.03 2.46s1.06 2.86 1.2 3.06c.15.2 2.08 3.18 5.04 4.46.7.3 1.25.49 1.68.63.7.22 1.34.19 1.84.12.56-.08 1.7-.7 1.94-1.38.24-.68.24-1.26.17-1.38-.07-.12-.26-.2-.55-.34z"/></svg></a></nav>
+</main>
+<a class="whatsapp" href="https://wa.me/34624769914" target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp"><svg viewBox="0 0 24 24" width="27" height="27" fill="currentColor" aria-hidden="true"><path d="M20.5 3.5A11.8 11.8 0 0 0 2 17.7L.5 23.5l5.95-1.56A11.8 11.8 0 0 0 20.5 3.5zM12 21a9.7 9.7 0 0 1-4.95-1.36l-.35-.2-3.53.93.94-3.44-.23-.36A9.7 9.7 0 1 1 12 21zm5.33-7.27c-.29-.15-1.7-.84-1.96-.94-.26-.1-.45-.15-.64.15-.19.29-.74.94-.9 1.13-.17.2-.33.22-.62.07-.29-.15-1.22-.45-2.33-1.43-.86-.76-1.44-1.7-1.61-1.99-.17-.29-.02-.45.13-.6.13-.13.29-.34.44-.5.14-.17.19-.29.29-.49.1-.2.05-.37-.02-.52-.07-.15-.64-1.55-.88-2.13-.23-.56-.47-.48-.64-.49h-.55c-.2 0-.52.07-.79.37-.27.29-1.03 1.01-1.03 2.46s1.06 2.86 1.2 3.06c.15.2 2.08 3.18 5.04 4.46.7.3 1.25.49 1.84.12.56-.08 1.7-.7 1.94-1.38.24-.68.24-1.26.17-1.38-.07-.12-.26-.2-.55-.34z"/></svg></a>
+<footer><div class="wrap">© <span id="year"></span> <strong>MG Radio Online</strong> · Diferente y con estilo</div></footer>
+<script>
+const STREAM_TITLE_URL='https://api.zeno.fm/mounts/metadata/subscribe/0m42pr5q4ehvv';
+const player=document.getElementById('player');
+const nowPlaying=document.getElementById('nowPlaying');
+const historyList=document.getElementById('listaHistorial');
+const historyKey='mgRadioHistoryV1';
+const trackArt=document.getElementById('trackArt');
+let artLookupTimer=null;
+let lastArtQuery='';
+function splitTrack(raw){let text=String(raw||'').trim().replace(/^MG Radio On Air:\s*/i,'');let parts=text.split(/\s[-–—]\s/);if(parts.length>=2)return {artist:parts[0].trim(),title:parts.slice(1).join(' - ').trim()};return {artist:'',title:text};}
+async function updateArtwork(raw){const parsed=splitTrack(raw);const query=[parsed.artist,parsed.title].filter(Boolean).join(' ');if(!query||query===lastArtQuery)return;lastArtQuery=query;trackArt.src='logo.png';trackArt.alt='Logo de MG Radio Online';currentSongCover.src='logo.png';currentSongCover.alt='Logo de MG Radio Online';try{const url='https://itunes.apple.com/search?term='+encodeURIComponent(query)+'&entity=song&limit=5';const response=await fetch(url);if(!response.ok)throw new Error('Artwork lookup failed');const data=await response.json();const results=data.results||[];const item=results.find(x=>x.artworkUrl100&&(x.artistName||'').toLowerCase().includes((parsed.artist||'').toLowerCase())&&(x.trackName||'').toLowerCase().includes((parsed.title||'').toLowerCase()))||results.find(x=>x.artworkUrl100);if(item&&lastArtQuery===query){const cover=item.artworkUrl100.replace('100x100bb','400x400bb');const alt='Carátula de '+(item.trackName||parsed.title)+' — '+(item.artistName||parsed.artist);trackArt.src=cover;trackArt.alt=alt;currentSongCover.src=cover;currentSongCover.alt=alt;}}catch(_){if(lastArtQuery===query){trackArt.src='logo.png';trackArt.alt='Logo de MG Radio Online';currentSongCover.src='logo.png';currentSongCover.alt='Logo de MG Radio Online';}}}
+let historyItems=[];
+let currentRaw='';
+function isStationBreak(raw){const value=String(raw||'').normalize('NFD').replace(/[\\u0300-\\u036f]/g,'').toLowerCase();return /\\b(cuna|cunas|jingle|jingles|promo|promos|promocion|promocional|identificacion|identificador|separador|separadores|sweeper|sweepers|spot|spots|publicidad|anuncio|anuncios|station id|radio id)\\b/.test(value);}
+try{const saved=JSON.parse(localStorage.getItem(historyKey)||'[]');if(Array.isArray(saved))historyItems=saved.filter(x=>typeof x==='string'&&!isStationBreak(x)).slice(0,10);}catch(_){historyItems=[];}
+function renderHistory(){historyList.replaceChildren();if(!historyItems.length){const li=document.createElement('li');li.className='empty';li.textContent='Esperando canciones anteriores…';historyList.append(li);return;}historyItems.forEach((track)=>{const parsed=splitTrack(track);const li=document.createElement('li');const img=document.createElement('img');img.className='track-cover';img.src='logo.png';img.alt='Logo de MG Radio Online';img.loading='lazy';const title=document.createElement('span');title.className='track-name';title.textContent=parsed.title||track;const artist=document.createElement('span');artist.className='track-artist';artist.textContent=parsed.artist||'MG Radio Online';li.append(img,title,artist);historyList.append(li);lookupHistoryArtwork(track,img,parsed);});}
+async function lookupHistoryArtwork(raw,img,parsed){const query=[parsed.artist,parsed.title].filter(Boolean).join(' ');if(!query)return;try{const response=await fetch('https://itunes.apple.com/search?term='+encodeURIComponent(query)+'&entity=song&limit=5');if(!response.ok)return;const data=await response.json();const results=data.results||[];const item=results.find(x=>x.artworkUrl100&&((x.artistName||'').toLowerCase().includes((parsed.artist||'').toLowerCase())||(x.trackName||'').toLowerCase().includes((parsed.title||'').toLowerCase())))||results.find(x=>x.artworkUrl100);if(item&&img.isConnected){img.src=item.artworkUrl100.replace('100x100bb','400x400bb');img.alt='Carátula de '+(item.trackName||parsed.title)+' — '+(item.artistName||parsed.artist);}}catch(_){}}
+const currentSongCover=document.getElementById('currentSongCover');
+const currentSongTitle=document.getElementById('currentSongTitle');
+const currentSongMeta=document.getElementById('currentSongMeta');
+const currentSongReview=document.getElementById('currentSongReview');
+const songReviews={
+ 'maná|clavado en un bar':'Incluida en “Sueños líquidos” (1997), esta canción mezcla rock latino y una historia de desamor que se convirtió en uno de los temas más recordados de Maná.',
+ 'mana|clavado en un bar':'Incluida en “Sueños líquidos” (1997), esta canción mezcla rock latino y una historia de desamor que se convirtió en uno de los temas más recordados de Maná.',
+ 'tracy chapman|fast car':'Una narración íntima sobre escapar de una vida difícil y buscar un futuro mejor. “Fast Car” apareció en el debut de Tracy Chapman en 1988.',
+ 'bon jovi|livin’ on a prayer':'Tommy y Gina representan a una pareja trabajadora que intenta salir adelante. El tema fue uno de los grandes himnos de “Slippery When Wet” (1986).',
+ 'bon jovi|livin on a prayer':'Tommy y Gina representan a una pareja trabajadora que intenta salir adelante. El tema fue uno de los grandes himnos de “Slippery When Wet” (1986).',
+ 'the cranberries|zombie':'Dolores O’Riordan escribió esta canción como respuesta a la violencia del conflicto en Irlanda del Norte. Fue publicada en 1994 en “No Need to Argue”.',
+ 'cranberries|zombie':'Dolores O’Riordan escribió esta canción como respuesta a la violencia del conflicto en Irlanda del Norte. Fue publicada en 1994 en “No Need to Argue”.',
+ 'roxette|it must have been love':'La balada apareció primero en 1987 y alcanzó fama mundial con su versión de 1990 para la banda sonora de “Pretty Woman”.',
+ 'europe|the final countdown':'El inolvidable riff de teclado de Joey Tempest abrió paso a uno de los himnos más reconocibles del rock de los 80.',
+ 'r.e.m.|losing my religion':'Su título es una expresión del sur de Estados Unidos relacionada con perder la paciencia o el control. Fue el gran éxito de R.E.M. en 1991.'
+};
+let currentReviewToken='';
+const liveHeadlines=[
+ 'AHORA SUENA EN MG RADIO',
+ 'LOS GRANDES ÉXITOS',
+ 'CLÁSICOS QUE DEJARON HUELLA',
+ 'SONIDOS INOLVIDABLES',
+ 'LA MEJOR MÚSICA DE SIEMPRE',
+ 'ÉXITOS DE LOS 80, 90 Y 2000',
+ 'TU MÚSICA, TU COMPAÑÍA'
+];
+let liveHeadlineIndex=0;
+function rotateLiveHeadline(){
+ const heading=document.querySelector('#currentSongFeature .news-kicker');
+ if(!heading)return;
+ heading.textContent=liveHeadlines[liveHeadlineIndex%liveHeadlines.length];
+ liveHeadlineIndex++;
+}
+function updateCurrentSongFeature(raw){
+ const parsed=splitTrack(raw);
+ const artist=parsed.artist||'MG Radio Online';
+ const title=parsed.title||raw;
+ currentSongTitle.textContent=title;
+ currentSongMeta.textContent=artist;
+ currentSongCover.src='logo.png';
+ currentSongCover.alt='MG Radio Online';
+ currentSongReview.textContent='Los grandes éxitos de siempre, en una selección que une generaciones. Esto es MG Radio Online: diferente y con estilo.';
+ rotateLiveHeadline();
+}
+function receiveTrack(title){const clean=String(title||'').trim();if(!clean)return;if(clean===currentRaw)return;if(currentRaw&&!isStationBreak(currentRaw)){historyItems=historyItems.filter(x=>x!==currentRaw&&x!==clean);historyItems.unshift(currentRaw);historyItems=historyItems.slice(0,10);}currentRaw=clean;if(!isStationBreak(clean))historyItems=historyItems.filter(x=>x!==clean);nowPlaying.textContent=clean;updateArtwork(clean);updateCurrentSongFeature(clean);try{localStorage.setItem(historyKey,JSON.stringify(historyItems));}catch(_){}renderHistory();}
+renderHistory();
+if('EventSource' in window){const events=new EventSource(STREAM_TITLE_URL);events.onmessage=(event)=>{try{const data=JSON.parse(event.data);if(data.streamTitle)receiveTrack(data.streamTitle);}catch(_){}};events.onerror=()=>{if(nowPlaying.textContent==='Conectando con la emisora…')nowPlaying.textContent='Esperando los datos de la canción…';};}else{nowPlaying.textContent='Este navegador no admite la información musical en directo.';}
+const likeKey='mgRadioLikedV1';const likeBtn=document.getElementById('likeBtn');let liked=localStorage.getItem(likeKey)==='1';function paintLike(){likeBtn.classList.toggle('active',liked);likeBtn.setAttribute('aria-pressed',String(liked));likeBtn.textContent=liked?'♥ Me gusta':'♡ Me gusta';}paintLike();likeBtn.addEventListener('click',()=>{liked=!liked;try{localStorage.setItem(likeKey,liked?'1':'0');}catch(_){}paintLike();});
+document.getElementById('shareBtn').addEventListener('click',async()=>{const shareData={title:'MG Radio Online',text:'Escucha MG Radio Online — Diferente y con estilo.',url:location.href};try{if(navigator.share){await navigator.share(shareData);}else if(navigator.clipboard&&window.isSecureContext){await navigator.clipboard.writeText(location.href);alert('Enlace de MG Radio Online copiado.');}else{window.prompt('Copia el enlace de MG Radio Online:',location.href);}}catch(e){if(e.name!=='AbortError')alert('No se pudo compartir automáticamente. Puedes copiar la dirección de la página.');}});
+// VU meters visuales, suavizados. Simulación visual: no mide el audio real de Zeno.
+const vuTracks=[document.getElementById('vuTrackL'),document.getElementById('vuTrackR')];
+const vuChannels=[document.getElementById('vuLeft'),document.getElementById('vuRight')];
+vuTracks.forEach(track=>{for(let i=0;i<24;i++){const seg=document.createElement('i');track.append(seg);}});
+let vuTimer=null;
+let vuStep=0;
+function animateVu(){
+  if(player.paused){stopVu();return;}
+  vuStep++;
+  // VU vertical con rebote rápido, caída más gradual y pequeñas variaciones entre L/R.
+  // Es una animación de ambiente: no analiza la señal real que llega desde Zeno.
+  const t=performance.now()/1000;
+  const pulse=(x)=>Math.pow(Math.max(0,Math.sin(x)),1.25);
+  const levels=[
+    .43 + .19*Math.sin(t*3.8) + .15*Math.sin(t*7.1+.6) + .15*pulse(t*8.4+.2),
+    .40 + .18*Math.sin(t*4.15+1.1) + .16*Math.sin(t*6.6+2.0) + .16*pulse(t*8.9+1.4)
+  ];
+  vuTracks.forEach((track,ch)=>{
+    const level=Math.max(.08,Math.min(.98,levels[ch]));
+    const count=Math.round(level*24);
+    [...track.children].forEach((seg,i)=>{
+      const flicker=(i>=count-2 && i<=count+1) ? (Math.random()>.38) : i<count;
+      seg.classList.toggle('on',flicker);
+    });
+  });
+  vuTimer=setTimeout(animateVu,65);
+}
+function startVu(){
+  if(vuTimer!==null)return;
+  vuChannels.forEach(channel=>channel.classList.add('active'));
+  animateVu();
+}
+function stopVu(){
+  if(vuTimer!==null){clearTimeout(vuTimer);vuTimer=null;}
+  vuChannels.forEach(channel=>channel.classList.remove('active'));
+  vuTracks.forEach(track=>[...track.children].forEach(seg=>seg.classList.remove('on')));
+}
+player.addEventListener('play',startVu);
+player.addEventListener('playing',startVu);
+player.addEventListener('pause',stopVu);
+player.addEventListener('ended',stopVu);
+// MG Music News: cambia cada minuto; álbum destacado e historia también rotan durante el día.
+const newsBank={
+  '11-21':[
+    {k:'UN DÍA COMO HOY · 1975',t:'Queen publica “A Night at the Opera”',d:'El álbum que incluye “Bohemian Rhapsody” aparece publicado el 21 de noviembre de 1975.',s:'Efemérides musicales'},
+    {k:'CUMPLEAÑOS MUSICAL · 1965',t:'Nace Björk',d:'La cantante y compositora islandesa nació el 21 de noviembre de 1965.',s:'This Day in Music'},
+    {k:'HISTORIA DEL VIDEOCLIP · 1983',t:'Se estrena el vídeo de “Thriller”',d:'El célebre cortometraje musical de Michael Jackson se presentó en Los Ángeles el 21 de noviembre de 1983.',s:'This Day in Music'}
+  ],
+  '11-22':[
+    {k:'UN DÍA COMO HOY · 1968',t:'The Beatles publican “The Beatles”',d:'El álbum doble conocido como “The White Album” llegó a las tiendas el 22 de noviembre de 1968.',s:'Efemérides musicales'},
+    {k:'UN DÍA COMO HOY · 1991',t:'Michael Jackson publica “Dangerous”',d:'El álbum “Dangerous” fue publicado el 22 de noviembre de 1991.',s:'Efemérides musicales'},
+    {k:'UN DÍA COMO HOY · 2004',t:'U2 lanza “How to Dismantle an Atomic Bomb”',d:'El álbum de U2 se publicó el 22 de noviembre de 2004.',s:'Efemérides musicales'}
+  ],
+  '11-23':[
+    {k:'UN DÍA COMO HOY · 1993',t:'Guns N’ Roses publica “The Spaghetti Incident?”',d:'El álbum de versiones de la banda salió el 23 de noviembre de 1993.',s:'Efemérides musicales'},
+    {k:'UN DÍA COMO HOY · 1999',t:'Metallica publica “S&M”',d:'El álbum en directo junto a la Orquesta Sinfónica de San Francisco se publicó el 23 de noviembre de 1999.',s:'Efemérides musicales'}
+  ]
+};
+const evergreen=[
+ {k:'CURIOSIDAD · POP ROCK',t:'Las canciones también cuentan historias',d:'En MG Music News recuperamos los detalles, colaboraciones y anécdotas detrás de los temas que forman parte de nuestra memoria musical.',s:'MG Radio Online'},
+ {k:'ESPECIAL · LOS 80',t:'Una década de grandes himnos',d:'Synth-pop, pop rock, baladas y grandes producciones marcaron una década que sigue sonando en la radio de hoy.',s:'MG Radio Online'},
+ {k:'ESPECIAL · LOS 90',t:'La década de los contrastes',d:'Britpop, grunge, rock alternativo y pop convivieron en una década de enorme diversidad musical.',s:'MG Radio Online'},
+ {k:'ESPECIAL · LOS 2000',t:'Nuevos sonidos, grandes canciones',d:'El pop rock de estadio, el indie y la música electrónica ampliaron el paisaje musical de los primeros años del siglo XXI.',s:'MG Radio Online'},
+ {k:'¿SABÍAS QUE…?',t:'Una canción puede tener varias versiones',d:'Versiones acústicas, directos y remezclas permiten descubrir una misma canción desde perspectivas muy distintas.',s:'MG Radio Online'}
+];
+const newsEl=document.getElementById('newsItems');const albumEl=document.getElementById('albumFeature');const storyEl=document.getElementById('songStory');const now=new Date();const mm=String(now.getMonth()+1).padStart(2,'0'),dd=String(now.getDate()).padStart(2,'0');const key=mm+'-'+dd;const daySeed=Math.floor(new Date(now.getFullYear(),now.getMonth(),now.getDate()).getTime()/86400000);const todayItems=newsBank[key]||[];const dailyPool=[...todayItems,...evergreen];let newsIndex=dailyPool.length?daySeed%dailyPool.length:0;
+function showNews(){if(!dailyPool.length)return;const item=dailyPool[newsIndex%dailyPool.length];const article=document.createElement('article');article.className='news-item';const kicker=document.createElement('div');kicker.className='news-kicker';kicker.textContent=item.k;const title=document.createElement('h4');title.textContent=item.t;const desc=document.createElement('p');desc.textContent=item.d;const source=document.createElement('div');source.className='news-date';source.textContent=item.s;article.append(kicker,title,desc,source);newsEl.replaceChildren(article);newsIndex=(newsIndex+1)%dailyPool.length;}
+const featuredAlbums=[
+ {a:'Bon Jovi',t:'Slippery When Wet',y:'1986',d:'Un álbum decisivo del hard rock melódico de los 80, con himnos como “Livin’ on a Prayer” y “You Give Love a Bad Name”.'},
+ {a:'Roxette',t:'Look Sharp!',y:'1988',d:'El disco que impulsó al dúo sueco internacionalmente con “The Look” y “Listen to Your Heart”.'},
+ {a:'Héroes del Silencio',t:'Senderos de traición',y:'1990',d:'Uno de los discos esenciales del rock español, con “Entre dos tierras” como uno de sus grandes temas.'},
+ {a:'Alanis Morissette',t:'Jagged Little Pill',y:'1995',d:'Un álbum emblemático del rock alternativo de los 90, con canciones como “You Oughta Know” e “Ironic”.'},
+ {a:'Maná',t:'Sueños líquidos',y:'1997',d:'Una de las grandes producciones del rock latino de los 90, que incluye “En el muelle de San Blas”.'},
+ {a:'La Oreja de Van Gogh',t:'El viaje de Copperpot',y:'2000',d:'Pop español de comienzos de siglo con canciones muy recordadas como “La playa” y “Puedes contar conmigo”.'},
+ {a:'Coldplay',t:'A Rush of Blood to the Head',y:'2002',d:'El segundo álbum de la banda británica, con “Clocks”, “The Scientist” e “In My Place”.'},
+ {a:'Shakira',t:'Fijación Oral, Vol. 1',y:'2005',d:'Un álbum de pop en español que incluye “La tortura” y “No”.'},
+ {a:'Michael Jackson',t:'Bad',y:'1987',d:'Uno de los grandes álbumes del pop, con una sucesión de éxitos como “Bad”, “Smooth Criminal” y “Man in the Mirror”.'},
+ {a:'U2',t:'The Joshua Tree',y:'1987',d:'Un disco fundamental de U2, con canciones inolvidables como “With or Without You” y “Where the Streets Have No Name”.'},
+ {a:'Madonna',t:'Like a Prayer',y:'1989',d:'Un trabajo decisivo en la carrera de Madonna, que mezcló pop, rock y gospel.'},
+ {a:'Nirvana',t:'Nevermind',y:'1991',d:'El álbum que llevó el grunge al gran público, impulsado por “Smells Like Teen Spirit”.'},
+ {a:'Guns N’ Roses',t:'Use Your Illusion I',y:'1991',d:'Rock de gran formato con temas como “November Rain” y “Don’t Cry”.'},
+ {a:'Pearl Jam',t:'Ten',y:'1991',d:'Un debut esencial del rock alternativo de los 90, con “Alive”, “Even Flow” y “Jeremy”.'},
+ {a:'Céline Dion',t:'Falling into You',y:'1996',d:'Un álbum de grandes baladas pop que incluye “Because You Loved Me” y “It’s All Coming Back to Me Now”.'},
+ {a:'The Cranberries',t:'No Need to Argue',y:'1994',d:'El disco que contiene “Zombie”, “Ode to My Family” y otras canciones emblemáticas del grupo irlandés.'},
+ {a:'Santana',t:'Supernatural',y:'1999',d:'Un regreso triunfal con colaboraciones y éxitos como “Smooth” y “Maria Maria”.'},
+ {a:'Coldplay',t:'X&Y',y:'2005',d:'Un álbum de pop rock atmosférico con canciones como “Fix You” y “Speed of Sound”.'},
+ {a:'Amy Winehouse',t:'Back to Black',y:'2006',d:'Una mezcla personal de soul y pop que dejó canciones tan recordadas como “Rehab” y “Back to Black”.'},
+ {a:'The Killers',t:'Hot Fuss',y:'2004',d:'El debut de la banda de Las Vegas que presentó himnos como “Mr. Brightside” y “Somebody Told Me”.'}
+];
+const songStories=[
+ {a:'The Police',t:'Every Breath You Take',y:'1983',d:'Aunque a menudo se interpreta como una canción romántica, Sting explicó que su letra habla de vigilancia, celos y obsesión. Apareció en el álbum “Synchronicity”.'},
+ {a:'R.E.M.',t:'Losing My Religion',y:'1991',d:'El título no trata literalmente sobre religión: es una expresión del sur de Estados Unidos relacionada con perder la paciencia o el control. Fue uno de los grandes éxitos de “Out of Time”.'},
+ {a:'Europe',t:'The Final Countdown',y:'1986',d:'El famoso riff de teclado nació de una idea musical de Joey Tempest. La canción terminó convirtiéndose en el tema que dio título al álbum y en un himno mundial.'},
+ {a:'Bon Jovi',t:'Livin’ on a Prayer',y:'1986',d:'Tommy y Gina, los protagonistas de la letra, representan a una pareja trabajadora que intenta salir adelante. La canción forma parte de “Slippery When Wet”.'},
+ {a:'Roxette',t:'It Must Have Been Love',y:'1987/1990',d:'La canción apareció primero en 1987 como tema navideño. Su nueva versión, incluida en la banda sonora de “Pretty Woman”, se convirtió en un éxito mundial en 1990.'},
+ {a:'Cranberries',t:'Zombie',y:'1994',d:'Dolores O’Riordan escribió la canción tras un atentado del IRA en Warrington, Inglaterra, en 1993. Su mensaje antibélico marcó el sonido de “No Need to Argue”.'},
+ {a:'Maná',t:'En el muelle de San Blas',y:'1997',d:'La canción se inspiró en la historia de una mujer de San Blas, México, conocida como “La loca del muelle de San Blas”, según relató la banda.'},
+ {a:'La Oreja de Van Gogh',t:'La playa',y:'2000',d:'Una de las baladas más recordadas del grupo, incluida en “El viaje de Copperpot”, combina nostalgia, memoria y despedida.'},
+ {a:'Queen',t:'The Show Must Go On',y:'1991',d:'Incluida en “Innuendo”, se convirtió en una de las interpretaciones más emocionantes de Freddie Mercury.'},
+ {a:'Phil Collins',t:'Another Day in Paradise',y:'1989',d:'Una canción que llamó la atención sobre las personas sin hogar y se convirtió en uno de los grandes éxitos de Phil Collins.'},
+ {a:'Toto',t:'Africa',y:'1982',d:'Su combinación de teclados, percusión y armonías la convirtió en uno de los clásicos más reconocibles de los 80.'},
+ {a:'A-ha',t:'Take On Me',y:'1985',d:'El famoso riff de sintetizador y su innovador videoclip ayudaron a convertirla en un éxito internacional.'},
+ {a:'Dire Straits',t:'Brothers in Arms',y:'1985',d:'La canción que dio título al álbum destacó por su sonido atmosférico y su tono antibélico.'},
+ {a:'Whitney Houston',t:'I Will Always Love You',y:'1992',d:'La versión de Whitney Houston para “The Bodyguard” se convirtió en una de las baladas más exitosas de todos los tiempos.'},
+ {a:'Oasis',t:'Wonderwall',y:'1995',d:'Incluida en “(What’s the Story) Morning Glory?”, se transformó en una de las canciones emblemáticas del britpop.'},
+ {a:'R.E.M.',t:'Everybody Hurts',y:'1992',d:'Una balada de “Automatic for the People” cuyo mensaje de acompañamiento y esperanza conectó con millones de oyentes.'},
+ {a:'Bryan Adams',t:'(Everything I Do) I Do It for You',y:'1991',d:'Compuesta para la película “Robin Hood: Prince of Thieves”, fue un éxito mundial y una de las baladas más populares de los 90.'},
+ {a:'The Verve',t:'Bitter Sweet Symphony',y:'1997',d:'Su arreglo de cuerdas y su reflexión sobre la vida cotidiana la convirtieron en un himno del britpop.'},
+ {a:'Juanes',t:'A Dios le Pido',y:'2002',d:'Una de las canciones que consolidó la carrera internacional de Juanes, mezclando pop rock con ritmos latinos.'},
+ {a:'Lenny Kravitz',t:'Again',y:'2000',d:'Una balada de rock incluida en “Greatest Hits”, reconocida por su melodía y su interpretación vocal.'}
+];
+let featureIndex=Math.floor(Math.random()*featuredAlbums.length);
+let storyIndex=Math.floor(Math.random()*songStories.length);
+function nextRandomIndex(current,length){
+ if(length<2)return 0;
+ let next=current;
+ while(next===current)next=Math.floor(Math.random()*length);
+ return next;
+}
+async function setFeatureArtwork(artist,title,img){
+ img.src='logo.png';
+ try{
+  const q=encodeURIComponent(artist+' '+title);
+  const r=await fetch('https://itunes.apple.com/search?term='+q+'&entity=album&limit=10');
+  if(!r.ok)return;
+  const data=await r.json();
+  const wantedArtist=artist.toLowerCase();
+  const wantedTitle=title.toLowerCase();
+  const match=(data.results||[]).find(x=>x.artworkUrl100&&(x.artistName||'').toLowerCase()===wantedArtist&&(x.collectionName||'').toLowerCase()===wantedTitle);
+  if(match)img.src=match.artworkUrl100.replace('100x100bb','200x200bb');
+ }catch(_){}
+}
+function showFeatures(){
+ const album=featuredAlbums[featureIndex];
+ const story=songStories[storyIndex];
+ albumEl.replaceChildren();
+ const img=document.createElement('img');
+ img.alt='Carátula de '+album.t+'; logo MG como alternativa';
+ const copy=document.createElement('div');
+ const strong=document.createElement('strong');strong.textContent=album.t;
+ const small=document.createElement('small');small.textContent=album.a+' · '+album.y;
+ const desc=document.createElement('p');desc.textContent=album.d;
+ copy.append(strong,small,desc);albumEl.append(img,copy);
+ setFeatureArtwork(album.a,album.t,img);
+ storyEl.replaceChildren();
+ const title=document.createElement('strong');title.textContent=story.a+' · '+story.t+' ('+story.y+')';
+ const text=document.createElement('p');text.textContent=story.d;
+ storyEl.append(title,text);
+ featureIndex=nextRandomIndex(featureIndex,featuredAlbums.length);
+ storyIndex=nextRandomIndex(storyIndex,songStories.length);
+}
+showNews();showFeatures();setInterval(()=>{showNews();showFeatures();},90000);
+
+// Tiempo de Elche y Mene Grande mediante Open-Meteo. Actualización cada 15 minutos.
+const weatherPlaces=[
+  {id:'weatherElche',lat:38.2669,lon:-0.6983},
+  {id:'weatherMeneGrande',lat:9.8170,lon:-70.9160}
+];
+function weatherDescription(code){
+  if(code===0)return ['☀️','Despejado'];
+  if([1,2].includes(code))return ['🌤️','Poco nuboso'];
+  if(code===3)return ['☁️','Nublado'];
+  if([45,48].includes(code))return ['🌫️','Niebla'];
+  if([51,53,55,56,57].includes(code))return ['🌦️','Llovizna'];
+  if([61,63,65,66,67,80,81,82].includes(code))return ['🌧️','Lluvia'];
+  if([71,73,75,77,85,86].includes(code))return ['🌨️','Nieve'];
+  if([95,96,99].includes(code))return ['⛈️','Tormenta'];
+  return ['🌡️','Tiempo actual'];
+}
+async function refreshWeather(place){
+  const box=document.getElementById(place.id);
+  try{
+    const url=`https://api.open-meteo.com/v1/forecast?latitude=${place.lat}&longitude=${place.lon}&current=temperature_2m,apparent_temperature,weather_code&timezone=auto`;
+    const response=await fetch(url);
+    if(!response.ok)throw new Error('Weather request failed');
+    const data=await response.json();
+    const current=data.current;
+    const [icon,description]=weatherDescription(current.weather_code);
+    box.querySelector('.weather-reading b').textContent=Math.round(current.temperature_2m)+'°';
+    box.querySelector('.weather-reading span').textContent=icon;
+    box.querySelector('.weather-reading').nextElementSibling.textContent=description+' · Sensación '+Math.round(current.apparent_temperature)+'°';
+  }catch(_){
+    box.querySelector('.weather-reading').nextElementSibling.textContent='Tiempo no disponible';
+  }
+}
+function refreshAllWeather(){weatherPlaces.forEach(refreshWeather);}
+refreshAllWeather();
+setInterval(refreshAllWeather,15*60*1000);
+
+document.getElementById('year').textContent=new Date().getFullYear();
+
+// MG MUSIC NEWS: titulares actuales desde canales RSS de NME y Rolling Stone.
+const musicNewsFeeds=[
+ {name:'JENESAISPOP',url:'https://jenesaispop.com/feed/'},
+ {name:'MONDOSONORO',url:'https://www.mondosonoro.com/feed/mp3'}
+];
+const musicNewsContainer=document.getElementById('musicNewsLiveItems');
+const musicNewsStatus=document.getElementById('musicNewsStatus');
+function musicNewsPlainText(markup){
+ const doc=new DOMParser().parseFromString(String(markup||''),'text/html');
+ return (doc.body.textContent||'').replace(/\s+/g,' ').trim();
+}
+function musicNewsDate(value){
+ const date=new Date(value);
+ if(Number.isNaN(date.getTime()))return '';
+ return date.toLocaleDateString('es-ES',{day:'2-digit',month:'short',year:'numeric'});
+}
+async function loadOneMusicFeed(feed){
+ const endpoint='https://api.rss2json.com/v1/api.json?rss_url='+encodeURIComponent(feed.url);
+ const response=await fetch(endpoint,{cache:'no-store'});
+ if(!response.ok)throw new Error('Feed no disponible: '+feed.name);
+ const data=await response.json();
+ if(data.status!=='ok'||!Array.isArray(data.items))throw new Error('Respuesta RSS no válida: '+feed.name);
+ return data.items.map(item=>({
+  source:feed.name,
+  title:musicNewsPlainText(item.title),
+  summary:musicNewsPlainText(item.description||item.content||''),
+  link:item.link,
+  date:item.pubDate,
+  timestamp:new Date(item.pubDate).getTime()
+ })).filter(item=>item.title&&/^https?:\/\//i.test(item.link||''));
+}
+function renderMusicNews(items){
+ musicNewsContainer.replaceChildren();
+ if(!items.length){
+  const fallback=document.createElement('div');
+  fallback.className='music-news-error';
+  fallback.textContent='Ahora mismo no se pudieron cargar las noticias. Inténtalo de nuevo más tarde.';
+  musicNewsContainer.append(fallback);
+  return;
+ }
+ items.slice(0,3).forEach(item=>{
+  const article=document.createElement('article');
+  article.className='live-news-item';
+  const source=document.createElement('div');
+  source.className='live-news-source';
+  source.textContent=item.source;
+  const heading=document.createElement('h4');
+  const link=document.createElement('a');
+  link.href=item.link;link.target='_blank';link.rel='noopener noreferrer';
+  link.textContent=item.title;
+  heading.append(link);
+  article.append(source,heading);
+  if(item.summary){
+   const sentence=item.summary.split(/(?<=[.!?])\s+/)[0]||item.summary;
+   const excerpt=document.createElement('p');
+   excerpt.textContent=sentence.length>190?sentence.slice(0,187)+'…':sentence;
+   article.append(excerpt);
+  }
+  const date=document.createElement('time');
+  date.className='live-news-date';
+  if(item.date)date.dateTime=new Date(item.date).toISOString();
+  date.textContent=musicNewsDate(item.date);
+  article.append(date);
+  musicNewsContainer.append(article);
+ });
+}
+async function refreshMusicNews(){
+ musicNewsStatus.textContent='Actualizando…';
+ const results=await Promise.allSettled(musicNewsFeeds.map(loadOneMusicFeed));
+ const articles=[];
+ results.forEach(result=>{if(result.status==='fulfilled')articles.push(...result.value);});
+ const unique=[...new Map(articles.map(item=>[item.link,item])).values()]
+  .sort((a,b)=>(b.timestamp||0)-(a.timestamp||0));
+ renderMusicNews(unique);
+ const good=results.filter(result=>result.status==='fulfilled').length;
+ musicNewsStatus.textContent=good?'Actualizado · '+new Date().toLocaleTimeString('es-ES',{hour:'2-digit',minute:'2-digit'}):'Noticias no disponibles';
+}
+refreshMusicNews();
+setInterval(refreshMusicNews,15*60*1000);
+
+</script>
+</body></html>
