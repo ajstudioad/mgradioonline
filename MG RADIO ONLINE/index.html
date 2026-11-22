@@ -84,6 +84,12 @@ main{padding:34px 0 48px}.hero{text-align:center;margin-bottom:24px}.eyebrow{fon
 .music-news-live .live-news-item a:hover{color:#b51219;text-decoration:underline}
 .music-news-live .live-news-date{display:block;margin-top:3px;font-size:8px;color:#8a8e94}
 .music-news-live .music-news-error{padding:10px 0;color:#6b7077;font-size:10px;line-height:1.45}
+.music-news-content{margin-top:9px;padding:10px 13px;background:rgba(255,255,255,.92);border:1px solid #e6e7e9;border-left:3px solid #d71920;border-radius:10px;box-shadow:0 4px 12px rgba(30,35,45,.045)}
+.music-news-live .music-news-intro{margin:0 0 5px;color:#6b7077;font-size:10px}
+.music-news-content .live-news-item{padding:9px 0;border-top:1px solid #ececee}
+.music-news-content .live-news-item:first-child{border-top:0}
+@media(max-width:760px){.music-news-content{padding:10px 11px}}
+
 </style>
 </head>
 <body>
@@ -115,9 +121,11 @@ main{padding:34px 0 48px}.hero{text-align:center;margin-bottom:24px}.eyebrow{fon
 <div class="radio-banner" role="img" aria-label="MG Radio Online 103.9 FM, lo mejor de los 80, 90, 2000 y hasta hoy"><div class="banner-record"></div><div class="banner-copy"><div class="banner-kicker">Tu banda sonora, siempre</div><div class="banner-title">MG RADIO ONLINE <em>103.9 FM</em></div><div class="banner-years">80s · 90s · 2000</div><div class="banner-tag">Y hasta hoy · DIFERENTE Y CON ESTILO</div></div><div class="banner-icon" aria-hidden="true">🎙️</div></div>
 <section class="music-news-live" aria-label="Noticias musicales actuales">
  <div class="music-news-heading"><h3>LO ÚLTIMO EN MÚSICA</h3><span class="news-live-status" id="musicNewsStatus">Buscando noticias…</span></div>
- <p class="music-news-intro">Noticias musicales en español · Pop, rock y actualidad.</p>
- <div id="musicNewsLiveItems" aria-live="polite">
-  <div class="music-news-error">Cargando las últimas noticias musicales…</div>
+ <div class="music-news-content">
+  <p class="music-news-intro">Noticias musicales en español · Pop, rock y actualidad.</p>
+  <div id="musicNewsLiveItems" aria-live="polite">
+   <div class="music-news-error">Cargando las últimas noticias musicales…</div>
+  </div>
  </div>
 </section>
 </section>
@@ -137,10 +145,11 @@ const trackArt=document.getElementById('trackArt');
 let artLookupTimer=null;
 let lastArtQuery='';
 function splitTrack(raw){let text=String(raw||'').trim().replace(/^MG Radio On Air:\s*/i,'');let parts=text.split(/\s[-–—]\s/);if(parts.length>=2)return {artist:parts[0].trim(),title:parts.slice(1).join(' - ').trim()};return {artist:'',title:text};}
-async function updateArtwork(raw){const parsed=splitTrack(raw);const query=[parsed.artist,parsed.title].filter(Boolean).join(' ');if(!query||query===lastArtQuery)return;lastArtQuery=query;trackArt.src='logo.png';try{const url='https://itunes.apple.com/search?term='+encodeURIComponent(query)+'&entity=song&limit=1';const response=await fetch(url);if(!response.ok)throw new Error('Artwork lookup failed');const data=await response.json();const item=(data.results||[]).find(x=>x.artworkUrl100);if(item){trackArt.src=item.artworkUrl100.replace('100x100bb','300x300bb');trackArt.alt='Carátula de '+(item.trackName||parsed.title)+' — '+(item.artistName||parsed.artist);} }catch(_){trackArt.src='logo.png';trackArt.alt='Logo de MG Radio Online';}}
+async function updateArtwork(raw){const parsed=splitTrack(raw);const query=[parsed.artist,parsed.title].filter(Boolean).join(' ');if(!query||query===lastArtQuery)return;lastArtQuery=query;trackArt.src='logo.png';trackArt.alt='Logo de MG Radio Online';currentSongCover.src='logo.png';currentSongCover.alt='Logo de MG Radio Online';try{const url='https://itunes.apple.com/search?term='+encodeURIComponent(query)+'&entity=song&limit=5';const response=await fetch(url);if(!response.ok)throw new Error('Artwork lookup failed');const data=await response.json();const results=data.results||[];const item=results.find(x=>x.artworkUrl100&&(x.artistName||'').toLowerCase().includes((parsed.artist||'').toLowerCase())&&(x.trackName||'').toLowerCase().includes((parsed.title||'').toLowerCase()))||results.find(x=>x.artworkUrl100);if(item&&lastArtQuery===query){const cover=item.artworkUrl100.replace('100x100bb','400x400bb');const alt='Carátula de '+(item.trackName||parsed.title)+' — '+(item.artistName||parsed.artist);trackArt.src=cover;trackArt.alt=alt;currentSongCover.src=cover;currentSongCover.alt=alt;}}catch(_){if(lastArtQuery===query){trackArt.src='logo.png';trackArt.alt='Logo de MG Radio Online';currentSongCover.src='logo.png';currentSongCover.alt='Logo de MG Radio Online';}}}
 let historyItems=[];
 let currentRaw='';
-try{const saved=JSON.parse(localStorage.getItem(historyKey)||'[]');if(Array.isArray(saved))historyItems=saved.filter(x=>typeof x==='string').slice(0,10);}catch(_){historyItems=[];}
+function isStationBreak(raw){const value=String(raw||'').normalize('NFD').replace(/[\\u0300-\\u036f]/g,'').toLowerCase();return /\\b(cuna|cunas|jingle|jingles|promo|promos|promocion|promocional|identificacion|identificador|separador|separadores|sweeper|sweepers|spot|spots|publicidad|anuncio|anuncios|station id|radio id)\\b/.test(value);}
+try{const saved=JSON.parse(localStorage.getItem(historyKey)||'[]');if(Array.isArray(saved))historyItems=saved.filter(x=>typeof x==='string'&&!isStationBreak(x)).slice(0,10);}catch(_){historyItems=[];}
 function renderHistory(){historyList.replaceChildren();if(!historyItems.length){const li=document.createElement('li');li.className='empty';li.textContent='Esperando canciones anteriores…';historyList.append(li);return;}historyItems.forEach((track)=>{const parsed=splitTrack(track);const li=document.createElement('li');const img=document.createElement('img');img.className='track-cover';img.src='logo.png';img.alt='Logo de MG Radio Online';img.loading='lazy';const title=document.createElement('span');title.className='track-name';title.textContent=parsed.title||track;const artist=document.createElement('span');artist.className='track-artist';artist.textContent=parsed.artist||'MG Radio Online';li.append(img,title,artist);historyList.append(li);lookupHistoryArtwork(track,img,parsed);});}
 async function lookupHistoryArtwork(raw,img,parsed){const query=[parsed.artist,parsed.title].filter(Boolean).join(' ');if(!query)return;try{const response=await fetch('https://itunes.apple.com/search?term='+encodeURIComponent(query)+'&entity=song&limit=5');if(!response.ok)return;const data=await response.json();const results=data.results||[];const item=results.find(x=>x.artworkUrl100&&((x.artistName||'').toLowerCase().includes((parsed.artist||'').toLowerCase())||(x.trackName||'').toLowerCase().includes((parsed.title||'').toLowerCase())))||results.find(x=>x.artworkUrl100);if(item&&img.isConnected){img.src=item.artworkUrl100.replace('100x100bb','400x400bb');img.alt='Carátula de '+(item.trackName||parsed.title)+' — '+(item.artistName||parsed.artist);}}catch(_){}}
 const currentSongCover=document.getElementById('currentSongCover');
@@ -187,7 +196,7 @@ function updateCurrentSongFeature(raw){
  currentSongReview.textContent='Los grandes éxitos de siempre, en una selección que une generaciones. Esto es MG Radio Online: diferente y con estilo.';
  rotateLiveHeadline();
 }
-function receiveTrack(title){const clean=String(title||'').trim();if(!clean)return;if(clean===currentRaw)return;if(currentRaw){historyItems=historyItems.filter(x=>x!==clean);historyItems.unshift(currentRaw);historyItems=historyItems.slice(0,10);}currentRaw=clean;historyItems=historyItems.filter(x=>x!==clean);nowPlaying.textContent=clean;updateArtwork(clean);updateCurrentSongFeature(clean);try{localStorage.setItem(historyKey,JSON.stringify(historyItems));}catch(_){}renderHistory();}
+function receiveTrack(title){const clean=String(title||'').trim();if(!clean)return;if(clean===currentRaw)return;if(currentRaw&&!isStationBreak(currentRaw)){historyItems=historyItems.filter(x=>x!==currentRaw&&x!==clean);historyItems.unshift(currentRaw);historyItems=historyItems.slice(0,10);}currentRaw=clean;if(!isStationBreak(clean))historyItems=historyItems.filter(x=>x!==clean);nowPlaying.textContent=clean;updateArtwork(clean);updateCurrentSongFeature(clean);try{localStorage.setItem(historyKey,JSON.stringify(historyItems));}catch(_){}renderHistory();}
 renderHistory();
 if('EventSource' in window){const events=new EventSource(STREAM_TITLE_URL);events.onmessage=(event)=>{try{const data=JSON.parse(event.data);if(data.streamTitle)receiveTrack(data.streamTitle);}catch(_){}};events.onerror=()=>{if(nowPlaying.textContent==='Conectando con la emisora…')nowPlaying.textContent='Esperando los datos de la canción…';};}else{nowPlaying.textContent='Este navegador no admite la información musical en directo.';}
 const likeKey='mgRadioLikedV1';const likeBtn=document.getElementById('likeBtn');let liked=localStorage.getItem(likeKey)==='1';function paintLike(){likeBtn.classList.toggle('active',liked);likeBtn.setAttribute('aria-pressed',String(liked));likeBtn.textContent=liked?'♥ Me gusta':'♡ Me gusta';}paintLike();likeBtn.addEventListener('click',()=>{liked=!liked;try{localStorage.setItem(likeKey,liked?'1':'0');}catch(_){}paintLike();});
