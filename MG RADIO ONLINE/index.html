@@ -41,7 +41,18 @@ header{position:relative;isolation:isolate;overflow:hidden;padding:14px 0;border
 .weather-status{font-size:9px;color:#777e86;margin-top:2px}
 .brand-copy h1{font-size:clamp(25px,4vw,38px);letter-spacing:.035em;line-height:1.08;margin:0;font-weight:850}.brand-copy p{display:inline-block;margin:8px 0 0;padding:3px 16px;border-radius:18px;background:rgba(215,25,32,.88);color:#fff;font-weight:900;letter-spacing:.13em;text-transform:uppercase;font-size:13px}.brand-copy .format{color:#59636f;font-size:13px;letter-spacing:0;text-transform:none;font-weight:600;margin-top:6px}
 main{padding:34px 0 48px}.hero{text-align:center;margin-bottom:24px}.eyebrow{font-size:11px;color:var(--red);font-weight:800;letter-spacing:.18em;text-transform:uppercase}.hero h2{font-size:clamp(25px,4vw,36px);margin:5px 0 6px;line-height:1.15}.hero p{margin:0;color:var(--muted)}
-.layout{display:grid;grid-template-columns:minmax(210px,.72fr) minmax(390px,1.35fr) minmax(260px,.9fr);gap:18px;align-items:start}.panel{border:1px solid rgba(225,220,220,.9);border-radius:20px;background:rgba(255,255,255,.94);box-shadow:0 16px 42px rgba(40,20,20,.075)}.player-panel{padding:26px}.live-row{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:20px}.live-pill{display:inline-flex;align-items:center;gap:8px;background:#fff1f1;color:var(--red);padding:7px 11px;border-radius:30px;font-size:11px;font-weight:850;letter-spacing:.1em}.dot{width:8px;height:8px;border-radius:50%;background:var(--red);box-shadow:0 0 0 4px #f9dada}.quality{font-size:11px;color:var(--muted)}.listen-title{text-align:center;font-size:20px;margin:0 0 3px}.listen-sub{text-align:center;color:var(--muted);font-size:13px;margin:0 0 18px}.audio-wrap{background:var(--soft);border-radius:14px;padding:18px}.audio-wrap audio{display:block;width:100%;height:42px}.now-title{margin:10px auto 12px;text-align:center;min-height:48px}.now-visual{display:flex;justify-content:center;align-items:center;gap:18px;margin:0 auto 8px;min-height:90px}.track-art{width:88px;height:88px;object-fit:cover;border-radius:12px;display:block;margin:0;box-shadow:0 8px 22px rgba(40,20,20,.16);background:#fff}.now-label{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);font-weight:800}.song{font-size:19px;font-weight:800;margin-top:5px;overflow-wrap:anywhere}.eq{margin:0;width:max-content;max-width:100%;padding:7px 10px;background:rgba(28,32,36,.94);border:1px solid #454b50;border-radius:8px;display:flex;justify-content:center;align-items:flex-end;gap:20px;box-shadow:0 3px 10px rgba(0,0,0,.12)}.vu-channel{display:flex;flex-direction:column;align-items:center;gap:4px;min-width:20px}.vu-label{color:#e0e3e5;font-size:9px;font-weight:900;letter-spacing:.12em}.vu-track{width:13px;height:64px;flex:none;display:flex;flex-direction:column-reverse;gap:1px;align-items:stretch;overflow:hidden;background:#080909;padding:2px;border-radius:2px;border:1px solid #42484d}.vu-track i{display:block;flex:1;min-height:2px;background:#17a34a;opacity:.16;transition:opacity .09s linear,filter .09s linear}.vu-track i:nth-child(n+17):nth-child(-n+20){background:#e5b526}.vu-track i:nth-child(n+21){background:#e52a2a}.vu-track i.on{opacity:1;filter:brightness(1.25);box-shadow:0 0 5px currentColor}.vu-caption{display:none}.eq.playing .vu-track i{transition:opacity .08s linear}@media(prefers-reduced-motion:reduce){.vu-track i{transition:none}}
+.layout{display:grid;grid-template-columns:minmax(210px,.72fr) minmax(390px,1.35fr) minmax(260px,.9fr);gap:18px;align-items:start}.panel{border:1px solid rgba(225,220,220,.9);border-radius:20px;background:rgba(255,255,255,.94);box-shadow:0 16px 42px rgba(40,20,20,.075)}.player-panel{padding:26px}.live-row{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:20px}.live-pill{display:inline-flex;align-items:center;gap:8px;background:#fff1f1;color:var(--red);padding:7px 11px;border-radius:30px;font-size:11px;font-weight:850;letter-spacing:.1em}.dot{width:8px;height:8px;border-radius:50%;background:var(--red);box-shadow:0 0 0 4px #f9dada}.quality{font-size:11px;color:var(--muted)}.listen-title{text-align:center;font-size:20px;margin:0 0 3px}.listen-sub{text-align:center;color:var(--muted);font-size:13px;margin:0 0 18px}.audio-wrap{background:var(--soft);border-radius:14px;padding:18px}.audio-wrap audio{display:block;width:100%;height:42px}
+.broadcast-player{display:flex;align-items:center;gap:16px;min-height:78px;padding:12px 16px;border-radius:40px;background:linear-gradient(115deg,#242b30 0%,#171d21 100%);box-shadow:0 9px 20px rgba(0,0,0,.2),inset 0 1px 0 rgba(255,255,255,.08);color:#fff}
+.broadcast-player audio{display:none}.broadcast-player{flex-wrap:wrap}.broadcast-play{width:70px;height:58px;flex:none;border:0;border-radius:20px;background:linear-gradient(145deg,#f12b32,#c91019);color:#fff;display:grid;place-items:center;cursor:pointer;box-shadow:0 4px 12px rgba(215,25,32,.35);transition:transform .16s,filter .16s}.broadcast-play:hover{filter:brightness(1.1);transform:translateY(-1px)}.broadcast-play svg{width:28px;height:28px;fill:currentColor}.broadcast-play .pause-icon{display:none}.broadcast-player.is-playing .broadcast-play .play-icon{display:none}.broadcast-player.is-playing .broadcast-play .pause-icon{display:block}
+.broadcast-time{font-size:13px;font-variant-numeric:tabular-nums;color:#f5f6f7;white-space:nowrap;min-width:47px;padding-left:2px}.broadcast-volume{margin-left:auto;display:flex;align-items:center;gap:9px;min-width:0;padding-left:13px;border-left:1px solid rgba(255,255,255,.22)}.broadcast-mute{width:34px;height:34px;flex:none;border:0;background:transparent;color:#fff;display:grid;place-items:center;cursor:pointer}.broadcast-mute svg{width:24px;height:24px;fill:currentColor}.broadcast-volume input{width:86px;accent-color:#ed252d;cursor:pointer}
+.rds-strip{flex:0 0 100%;min-width:0;display:flex;align-items:center;gap:9px;padding:7px 3px 1px;border-top:1px solid rgba(255,255,255,.14);overflow:hidden}
+.rds-tag{flex:none;color:#ff6268;font-size:9px;font-weight:950;letter-spacing:.16em}
+.rds-window{min-width:0;overflow:hidden;white-space:nowrap;color:#f3f5f6;font-size:10px;font-weight:800;letter-spacing:.12em}
+.rds-window span{display:inline-block;animation:rdsFade .45s ease both}
+@keyframes rdsFade{from{opacity:0;transform:translateX(12px)}to{opacity:1;transform:translateX(0)}}
+@media(prefers-reduced-motion:reduce){.rds-window span{animation:none}}
+@media(max-width:620px){.broadcast-player{gap:10px;min-height:70px;padding:10px 11px}.broadcast-play{width:58px;height:52px;border-radius:17px}.broadcast-time{font-size:12px;min-width:43px}.broadcast-volume{gap:4px;padding-left:8px}.broadcast-volume input{width:62px}}
+@media(max-width:390px){.broadcast-volume input{width:48px}.broadcast-player{gap:7px}.broadcast-mute{width:28px}}.now-title{margin:10px auto 12px;text-align:center;min-height:48px}.now-visual{display:flex;justify-content:center;align-items:center;gap:18px;margin:0 auto 8px;min-height:90px}.track-art{width:88px;height:88px;object-fit:cover;border-radius:12px;display:block;margin:0;box-shadow:0 8px 22px rgba(40,20,20,.16);background:#fff}.now-label{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);font-weight:800}.song{font-size:19px;font-weight:800;margin-top:5px;overflow-wrap:anywhere}.eq{margin:0;width:max-content;max-width:100%;padding:7px 10px;background:rgba(28,32,36,.94);border:1px solid #454b50;border-radius:8px;display:flex;justify-content:center;align-items:flex-end;gap:20px;box-shadow:0 3px 10px rgba(0,0,0,.12)}.vu-channel{display:flex;flex-direction:column;align-items:center;gap:4px;min-width:20px}.vu-label{color:#e0e3e5;font-size:9px;font-weight:900;letter-spacing:.12em}.vu-track{width:13px;height:64px;flex:none;display:flex;flex-direction:column-reverse;gap:1px;align-items:stretch;overflow:hidden;background:#080909;padding:2px;border-radius:2px;border:1px solid #42484d}.vu-track i{display:block;flex:1;min-height:2px;background:#17a34a;opacity:.16;transition:opacity .09s linear,filter .09s linear}.vu-track i:nth-child(n+17):nth-child(-n+20){background:#e5b526}.vu-track i:nth-child(n+21){background:#e52a2a}.vu-track i.on{opacity:1;filter:brightness(1.25);box-shadow:0 0 5px currentColor}.vu-caption{display:none}.eq.playing .vu-track i{transition:opacity .08s linear}@media(prefers-reduced-motion:reduce){.vu-track i{transition:none}}
 .actions{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:22px}.btn{border:1px solid var(--line);background:#fff;border-radius:30px;padding:10px 16px;font-weight:750;font-size:13px;cursor:pointer;display:inline-flex;align-items:center;gap:8px;transition:.18s}.btn:hover{transform:translateY(-1px);border-color:#d5a0a2}.btn.primary{background:var(--red);border-color:var(--red);color:#fff}.btn.primary:hover{background:var(--red-dark)}.btn.active{background:#fff1f1;color:var(--red);border-color:#f0babc}.hint{text-align:center;color:var(--muted);font-size:11px;margin:10px 0 0}
 .history{grid-column:auto;padding:20px;background:#e52b2b;border:0;border-radius:12px;box-shadow:0 14px 34px rgba(120,0,0,.13);color:#fff}.history-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}.history h3{margin:0;font-size:26px;font-weight:900;letter-spacing:.02em;color:#fff}.history small{color:rgba(255,255,255,.85);font-size:12px}.history-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:0}.history-list li{display:grid;grid-template-columns:64px minmax(0,1fr) auto;grid-template-rows:auto auto;column-gap:13px;align-items:center;min-width:0;padding:9px 0;border-bottom:1px solid rgba(255,255,255,.22);background:transparent;border-radius:0;color:#fff;font-size:14px}.history-list li:last-child{border-bottom:0}.history-list .track-cover{grid-column:1;grid-row:1/3;width:64px;height:64px;aspect-ratio:1/1;display:block;object-fit:cover;background:#fff;box-shadow:0 4px 14px rgba(0,0,0,.15);margin:0}.history-list .track-name{grid-column:2;grid-row:1;display:block;color:#fff;font-weight:800;line-height:1.3;overflow-wrap:anywhere}.history-list .track-artist{grid-column:2;grid-row:2;display:block;color:rgba(255,255,255,.92);font-size:13px;line-height:1.35;overflow-wrap:anywhere}.history-list .empty{display:block;color:#fff;padding:12px 0;border:0}.history-list .track-no{display:none}
 .news-panel{padding:18px 16px;background:#fff;border:1px solid rgba(225,220,220,.9);border-radius:12px;box-shadow:0 14px 34px rgba(40,20,20,.07);min-width:0}
@@ -113,7 +124,13 @@ main{padding:34px 0 48px}.hero{text-align:center;margin-bottom:24px}.eyebrow{fon
 <section class="panel player-panel" aria-label="Reproductor de radio">
 <div class="live-row"><span class="live-pill"><span class="dot"></span> EN DIRECTO</span><span class="quality">MG Radio Online · 103.9 FM</span></div>
 <h2 class="listen-title">Escúchanos en vivo</h2><p class="listen-sub">Dale al play y disfruta de la mejor selección musical</p>
-<div class="audio-wrap"><audio id="player" controls preload="none" playsinline><source src="https://stream.zeno.fm/0m42pr5q4ehvv" type="audio/mpeg">Tu navegador no admite audio HTML5.</audio></div>
+<div class="audio-wrap broadcast-player" role="group" aria-label="Controles de reproducción de MG Radio Online">
+ <audio id="player" preload="none" playsinline><source src="https://stream.zeno.fm/0m42pr5q4ehvv" type="audio/mpeg">Tu navegador no admite audio HTML5.</audio>
+ <button class="broadcast-play" id="broadcastPlay" type="button" aria-label="Reproducir MG Radio Online" aria-pressed="false"><svg class="play-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.8c0-.8.9-1.3 1.6-.9l11 7.2a1.1 1.1 0 0 1 0 1.8l-11 7.2c-.7.4-1.6-.1-1.6-.9V4.8z"/></svg><svg class="pause-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4h4.5v16H6zM13.5 4H18v16h-4.5z"/></svg></button>
+ <span class="broadcast-time" id="broadcastTime" aria-live="off">00:00</span>
+ <div class="broadcast-volume"><button class="broadcast-mute" id="broadcastMute" type="button" aria-label="Silenciar" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9v6h4l5 4V5L7 9H3zm12.5 3a3.5 3.5 0 0 0-2-3.16v6.32a3.5 3.5 0 0 0 2-3.16zm-2-8.5v2.06a7 7 0 0 1 0 12.88v2.06a9 9 0 0 0 0-17z"/></svg></button><input id="broadcastVolume" type="range" min="0" max="1" step="0.01" value="0.85" aria-label="Volumen"></div>
+ <div class="rds-strip" aria-label="Mensajes de la emisora"><span class="rds-tag">RDS</span><div class="rds-window"><span id="rdsMessage">EN VIVO · MG RADIO ONLINE</span></div></div>
+</div>
 <div class="now-title"><div class="now-label">Ahora suena</div><div class="song" id="nowPlaying" aria-live="polite">Conectando con la emisora…</div></div>
 <div class="now-visual"><img class="track-art" id="trackArt" src="logo.png" alt="Portada del álbum; se muestra el logo de MG Radio Online cuando no hay carátula disponible"><div class="eq" id="equalizer" aria-label="Medidores de audio estéreo"><div class="vu-channel" id="vuLeft"><span class="vu-label">L</span><div class="vu-track" id="vuTrackL"></div></div><div class="vu-channel" id="vuRight"><span class="vu-label">R</span><div class="vu-track" id="vuTrackR"></div></div><div class="vu-caption">VU meters · estéreo</div></div></div>
 <div class="actions"><button class="btn" id="likeBtn" type="button" aria-pressed="false">♡ Me gusta</button><button class="btn primary" id="shareBtn" type="button">↗ Compartir radio</button></div>
@@ -201,7 +218,8 @@ function updateSongStory(artist,title){
   paragraph.textContent=known.d;
  }else{
   heading.textContent=(artist?artist+' · ':'')+title;
-  paragraph.textContent='Todavía no tenemos una historia verificada de esta canción. Preferimos no mostrar una curiosidad que pueda pertenecer a otro tema.';
+  storyEl.append(heading);
+  return;
  }
  storyEl.append(heading,paragraph);
 }
@@ -333,7 +351,7 @@ async function updateCurrentSongFeature(raw){
    }else{
     const albumText=album?' aparece en el álbum «'+album+'»':'';
     const yearText=year?' (ficha del catálogo: '+year+')':'';
-    currentSongReview.textContent='Ficha musical localizada: «'+item.trackName+'», interpretada por '+item.artistName+albumText+yearText+'. Estos datos proceden del catálogo de Apple Music; no hemos encontrado todavía una reseña histórica verificada para este tema.';
+    currentSongReview.textContent='Ficha musical localizada: «'+item.trackName+'», interpretada por '+item.artistName+albumText+yearText+'. Datos del catálogo de Apple Music.';
    }
    const matchedStory=songStories.find(story=>
     normalizeMusicText(story.t)===normalizeMusicText(item.trackName)&&artistMatches(item.artistName,story.a)
@@ -349,9 +367,7 @@ async function updateCurrentSongFeature(raw){
     storyEl.replaceChildren();
     const heading=document.createElement('strong');
     heading.textContent=item.artistName+' · '+item.trackName;
-    const paragraph=document.createElement('p');
-    paragraph.textContent='Tenemos identificados el tema y sus datos de catálogo, pero todavía no una curiosidad histórica contrastada para publicar.';
-    storyEl.append(heading,paragraph);
+    storyEl.append(heading);
    }
   }else if(currentReviewToken===key){
    currentSongMeta.textContent=artist+' · Buscando en MusicBrainz…';
@@ -364,7 +380,7 @@ async function updateCurrentSongFeature(raw){
       return normalizeMusicText(parts[0])===normalizeMusicText(mb.artist)&&
         normalizeMusicText(parts.slice(1).join('|'))===normalizeMusicText(mb.title);
      })?.[1];
-     currentSongReview.textContent=knownMbReview||('Ficha musical localizada: «'+mb.title+'», interpretada por '+mb.artist+(mb.album?' y asociada al álbum «'+mb.album+'»':'')+(mb.year?' ('+mb.year+')':'')+'. Datos consultados en MusicBrainz. No hemos encontrado todavía una reseña histórica verificada para este tema.');
+     currentSongReview.textContent=knownMbReview||('Ficha musical localizada: «'+mb.title+'», interpretada por '+mb.artist+(mb.album?' y asociada al álbum «'+mb.album+'»':'')+(mb.year?' ('+mb.year+')':'')+'. Datos del catálogo MusicBrainz.');
      if(mb.releaseId)loadMusicBrainzCover(mb.releaseId,key);
     }else if(currentReviewToken===key){
      currentSongMeta.textContent=artist+' · No encontramos una ficha confirmada';
@@ -384,6 +400,33 @@ async function updateCurrentSongFeature(raw){
 function receiveTrack(title){const clean=String(title||'').trim();if(!clean)return;if(clean===currentRaw)return;if(currentRaw&&!isStationBreak(currentRaw)){historyItems=historyItems.filter(x=>x!==currentRaw&&x!==clean);historyItems.unshift(currentRaw);historyItems=historyItems.slice(0,10);}currentRaw=clean;if(!isStationBreak(clean))historyItems=historyItems.filter(x=>x!==clean);nowPlaying.textContent=clean;updateArtwork(clean);updateCurrentSongFeature(clean);try{localStorage.setItem(historyKey,JSON.stringify(historyItems));}catch(_){}renderHistory();}
 renderHistory();
 if('EventSource' in window){const events=new EventSource(STREAM_TITLE_URL);events.onmessage=(event)=>{try{const data=JSON.parse(event.data);if(data.streamTitle)receiveTrack(data.streamTitle);}catch(_){}};events.onerror=()=>{if(nowPlaying.textContent==='Conectando con la emisora…')nowPlaying.textContent='Esperando los datos de la canción…';};}else{nowPlaying.textContent='Este navegador no admite la información musical en directo.';}
+// Controles visuales del reproductor broadcast. El tiempo indica cuánto lleva sonando esta sesión.
+const broadcastShell=document.querySelector('.broadcast-player');
+const broadcastPlay=document.getElementById('broadcastPlay');
+const broadcastTime=document.getElementById('broadcastTime');
+const broadcastMute=document.getElementById('broadcastMute');
+const broadcastVolume=document.getElementById('broadcastVolume');
+let playbackStartedAt=0,playbackElapsed=0,broadcastClock=null;
+function formatElapsed(ms){const total=Math.floor(ms/1000);const h=Math.floor(total/3600),m=Math.floor((total%3600)/60),sec=total%60;return h?String(h).padStart(2,'0')+':'+String(m).padStart(2,'0')+':'+String(sec).padStart(2,'0'):String(m).padStart(2,'0')+':'+String(sec).padStart(2,'0');}
+function paintBroadcast(){const active=!player.paused&&!player.ended;broadcastShell.classList.toggle('is-playing',active);broadcastPlay.setAttribute('aria-pressed',String(active));broadcastPlay.setAttribute('aria-label',active?'Pausar MG Radio Online':'Reproducir MG Radio Online');broadcastMute.setAttribute('aria-pressed',String(player.muted));broadcastMute.setAttribute('aria-label',player.muted?'Activar sonido':'Silenciar');broadcastTime.textContent=formatElapsed(playbackElapsed+(active?Date.now()-playbackStartedAt:0));}
+broadcastPlay.addEventListener('click',()=>{if(player.paused){const promise=player.play();if(promise&&promise.catch)promise.catch(()=>{broadcastTime.textContent='Pulsa para escuchar';});}else player.pause();});
+player.addEventListener('play',()=>{playbackStartedAt=Date.now();if(broadcastClock===null)broadcastClock=setInterval(paintBroadcast,500);paintBroadcast();});
+player.addEventListener('pause',()=>{if(playbackStartedAt){playbackElapsed+=Date.now()-playbackStartedAt;playbackStartedAt=0;}if(broadcastClock!==null){clearInterval(broadcastClock);broadcastClock=null;}paintBroadcast();});
+player.addEventListener('ended',()=>{playbackElapsed=0;paintBroadcast();});
+broadcastMute.addEventListener('click',()=>{player.muted=!player.muted;paintBroadcast();});
+broadcastVolume.addEventListener('input',()=>{player.volume=Number(broadcastVolume.value);player.muted=player.volume===0;paintBroadcast();});
+player.volume=Number(broadcastVolume.value);paintBroadcast();
+const rdsMessages=[
+ 'EN VIVO · MG RADIO ONLINE',
+ 'LOS GRANDES ÉXITOS DE SIEMPRE',
+ 'POP · ROCK · ALTERNATIVE · BALADAS',
+ 'DE LOS 80, 90 Y 2000 HASTA HOY',
+ 'DIFERENTE Y CON ESTILO'
+];
+const rdsMessage=document.getElementById('rdsMessage');
+let rdsIndex=0;
+setInterval(()=>{if(!rdsMessage)return;rdsIndex=(rdsIndex+1)%rdsMessages.length;rdsMessage.textContent=rdsMessages[rdsIndex];rdsMessage.style.animation='none';void rdsMessage.offsetWidth;rdsMessage.style.animation='';},7000);
+
 const likeKey='mgRadioLikedV1';const likeBtn=document.getElementById('likeBtn');let liked=localStorage.getItem(likeKey)==='1';function paintLike(){likeBtn.classList.toggle('active',liked);likeBtn.setAttribute('aria-pressed',String(liked));likeBtn.textContent=liked?'♥ Me gusta':'♡ Me gusta';}paintLike();likeBtn.addEventListener('click',()=>{liked=!liked;try{localStorage.setItem(likeKey,liked?'1':'0');}catch(_){}paintLike();});
 document.getElementById('shareBtn').addEventListener('click',async()=>{const shareData={title:'MG Radio Online',text:'Escucha MG Radio Online — Diferente y con estilo.',url:location.href};try{if(navigator.share){await navigator.share(shareData);}else if(navigator.clipboard&&window.isSecureContext){await navigator.clipboard.writeText(location.href);alert('Enlace de MG Radio Online copiado.');}else{window.prompt('Copia el enlace de MG Radio Online:',location.href);}}catch(e){if(e.name!=='AbortError')alert('No se pudo compartir automáticamente. Puedes copiar la dirección de la página.');}});
 // VU meters visuales, suavizados. Simulación visual: no mide el audio real de Zeno.
@@ -444,15 +487,17 @@ const newsBank={
     {k:'UN DÍA COMO HOY · 1999',t:'Metallica publica “S&M”',d:'El álbum en directo junto a la Orquesta Sinfónica de San Francisco se publicó el 23 de noviembre de 1999.',s:'Efemérides musicales'}
   ]
 };
-const evergreen=[
- {k:'CURIOSIDAD · POP ROCK',t:'Las canciones también cuentan historias',d:'En MG Music News recuperamos los detalles, colaboraciones y anécdotas detrás de los temas que forman parte de nuestra memoria musical.',s:'MG Radio Online'},
- {k:'ESPECIAL · LOS 80',t:'Una década de grandes himnos',d:'Synth-pop, pop rock, baladas y grandes producciones marcaron una década que sigue sonando en la radio de hoy.',s:'MG Radio Online'},
- {k:'ESPECIAL · LOS 90',t:'La década de los contrastes',d:'Britpop, grunge, rock alternativo y pop convivieron en una década de enorme diversidad musical.',s:'MG Radio Online'},
- {k:'ESPECIAL · LOS 2000',t:'Nuevos sonidos, grandes canciones',d:'El pop rock de estadio, el indie y la música electrónica ampliaron el paisaje musical de los primeros años del siglo XXI.',s:'MG Radio Online'},
- {k:'¿SABÍAS QUE…?',t:'Una canción puede tener varias versiones',d:'Versiones acústicas, directos y remezclas permiten descubrir una misma canción desde perspectivas muy distintas.',s:'MG Radio Online'}
-];
-const newsEl=document.getElementById('newsItems');const albumEl=document.getElementById('albumFeature');const storyEl=document.getElementById('songStory');const now=new Date();const mm=String(now.getMonth()+1).padStart(2,'0'),dd=String(now.getDate()).padStart(2,'0');const key=mm+'-'+dd;const daySeed=Math.floor(new Date(now.getFullYear(),now.getMonth(),now.getDate()).getTime()/86400000);const todayItems=newsBank[key]||[];const dailyPool=[...todayItems,...evergreen];let newsIndex=dailyPool.length?daySeed%dailyPool.length:0;
-function showNews(){if(!dailyPool.length)return;const item=dailyPool[newsIndex%dailyPool.length];const article=document.createElement('article');article.className='news-item';const kicker=document.createElement('div');kicker.className='news-kicker';kicker.textContent=item.k;const title=document.createElement('h4');title.textContent=item.t;const desc=document.createElement('p');desc.textContent=item.d;const source=document.createElement('div');source.className='news-date';source.textContent=item.s;article.append(kicker,title,desc,source);newsEl.replaceChildren(article);newsIndex=(newsIndex+1)%dailyPool.length;}
+
+const newsEl=document.getElementById('newsItems');const albumEl=document.getElementById('albumFeature');const storyEl=document.getElementById('songStory');const now=new Date();const mm=String(now.getMonth()+1).padStart(2,'0'),dd=String(now.getDate()).padStart(2,'0');const key=mm+'-'+dd;const daySeed=Math.floor(new Date(now.getFullYear(),now.getMonth(),now.getDate()).getTime()/86400000);const todayItems=newsBank[key]||[];let newsIndex=todayItems.length?daySeed%todayItems.length:0;
+function showNews(){
+ let item;
+ if(todayItems.length){item=todayItems[newsIndex%todayItems.length];newsIndex=(newsIndex+1)%todayItems.length;}
+ else{
+  const story=songStories[daySeed%songStories.length];
+  item={k:'CANCIÓN DE NUESTRA MEMORIA · '+story.y,t:story.t+' — '+story.a,d:story.d,s:'MG Radio Online · Archivo musical'};
+ }
+ const article=document.createElement('article');article.className='news-item';const kicker=document.createElement('div');kicker.className='news-kicker';kicker.textContent=item.k;const title=document.createElement('h4');title.textContent=item.t;const desc=document.createElement('p');desc.textContent=item.d;const source=document.createElement('div');source.className='news-date';source.textContent=item.s;article.append(kicker,title,desc,source);newsEl.replaceChildren(article);
+}
 const featuredAlbums=[
  {a:'Bon Jovi',t:'Slippery When Wet',y:'1986',d:'Un álbum decisivo del hard rock melódico de los 80, con himnos como “Livin’ on a Prayer” y “You Give Love a Bad Name”.'},
  {a:'Roxette',t:'Look Sharp!',y:'1988',d:'El disco que impulsó al dúo sueco internacionalmente con “The Look” y “Listen to Your Heart”.'},
@@ -473,7 +518,31 @@ const featuredAlbums=[
  {a:'Santana',t:'Supernatural',y:'1999',d:'Un regreso triunfal con colaboraciones y éxitos como “Smooth” y “Maria Maria”.'},
  {a:'Coldplay',t:'X&Y',y:'2005',d:'Un álbum de pop rock atmosférico con canciones como “Fix You” y “Speed of Sound”.'},
  {a:'Amy Winehouse',t:'Back to Black',y:'2006',d:'Una mezcla personal de soul y pop que dejó canciones tan recordadas como “Rehab” y “Back to Black”.'},
- {a:'The Killers',t:'Hot Fuss',y:'2004',d:'El debut de la banda de Las Vegas que presentó himnos como “Mr. Brightside” y “Somebody Told Me”.'}
+ {a:'The Killers',t:'Hot Fuss',y:'2004',d:'El debut de la banda de Las Vegas que presentó himnos como “Mr. Brightside” y “Somebody Told Me”.'},
+ {a:'Phil Collins',t:'...But Seriously',y:'1989',d:'Un álbum de pop rock con canciones de gran alcance como “Another Day in Paradise” y “I Wish It Would Rain Down”.'},
+ {a:'The Police',t:'Synchronicity',y:'1983',d:'El último álbum de estudio del trío reunió “Every Breath You Take”, “King of Pain” y “Wrapped Around Your Finger”.'},
+ {a:'Tears for Fears',t:'Songs from the Big Chair',y:'1985',d:'Un clásico del pop de los 80 que incluye “Everybody Wants to Rule the World” y “Shout”.'},
+ {a:'Simple Minds',t:'Once Upon a Time',y:'1985',d:'El álbum que contiene “Alive and Kicking” y “All the Things She Said”, dos temas esenciales de su sonido expansivo.'},
+ {a:'The Cure',t:'Disintegration',y:'1989',d:'Una de las obras más influyentes de The Cure, con atmósferas envolventes y canciones como “Lovesong” y “Pictures of You”.'},
+ {a:'Depeche Mode',t:'Violator',y:'1990',d:'Un punto culminante de su etapa electrónica, con “Personal Jesus” y “Enjoy the Silence”.'},
+ {a:'The Rolling Stones',t:'Steel Wheels',y:'1989',d:'El álbum que marcó el regreso del grupo a las giras de estadios, con “Mixed Emotions” como sencillo destacado.'},
+ {a:'U2',t:'Achtung Baby',y:'1991',d:'U2 renovó su sonido con influencias electrónicas y alternativas en canciones como “One” y “Mysterious Ways”.'},
+ {a:'Pearl Jam',t:'Vs.',y:'1993',d:'El segundo álbum del grupo llevó más lejos su mezcla de rock alternativo y energía en directo.'},
+ {a:'Radiohead',t:'OK Computer',y:'1997',d:'Un álbum decisivo de los 90, reconocido por su mirada inquieta sobre la tecnología y la vida moderna.'},
+ {a:'The Wallflowers',t:'Bringing Down the Horse',y:'1996',d:'El disco que popularizó “One Headlight” y consolidó el sonido de rock americano de la banda.'},
+ {a:'Sheryl Crow',t:'Tuesday Night Music Club',y:'1993',d:'Su debut de gran éxito incluye “All I Wanna Do”, una de las canciones más reconocibles del pop rock de los 90.'},
+ {a:'No Doubt',t:'Tragic Kingdom',y:'1995',d:'El álbum que lanzó al grupo al estrellato internacional con “Don’t Speak” y “Just a Girl”.'},
+ {a:'Natalie Imbruglia',t:'Left of the Middle',y:'1997',d:'Su debut incluye “Torn”, una canción que se convirtió en uno de los grandes éxitos pop de finales de los 90.'},
+ {a:'Evanescence',t:'Fallen',y:'2003',d:'El debut multiplatino combinó rock alternativo, guitarras y arreglos de piano en temas como “Bring Me to Life”.'},
+ {a:'The Strokes',t:'Is This It',y:'2001',d:'Un disco clave para el renacimiento del rock de guitarras a comienzos de los 2000.'},
+ {a:'Keane',t:'Hopes and Fears',y:'2004',d:'El debut británico, construido alrededor del piano, incluye “Somewhere Only We Know” y “Everybody’s Changing”.'},
+ {a:'Maroon 5',t:'Songs About Jane',y:'2002',d:'El primer álbum del grupo mezcló pop, rock y soul en canciones como “This Love” y “She Will Be Loved”.'},
+ {a:'Juanes',t:'Mi sangre',y:'2004',d:'Un álbum que amplió el alcance internacional del pop rock latino con “La camisa negra” y “Nada valgo sin tu amor”.'},
+ {a:'The Fray',t:'How to Save a Life',y:'2005',d:'El álbum que dio a conocer al grupo con su piano-rock emocional y la canción que le da título.'},
+ {a:'Dido',t:'No Angel',y:'1999',d:'Su mezcla de pop y electrónica suave destacó con “Here with Me” y “Thank You”.'},
+ {a:'Oasis',t:'Definitely Maybe',y:'1994',d:'El debut de Oasis presentó la actitud y las guitarras que definirían una parte esencial del britpop.'},
+ {a:'Bryan Adams',t:'Waking Up the Neighbours',y:'1991',d:'Un álbum internacionalmente exitoso que incluye “(Everything I Do) I Do It for You” y “Can’t Stop This Thing We Started”.'},
+ {a:'The Cranberries',t:'Everybody Else Is Doing It, So Why Can’t We?',y:'1993',d:'El debut del grupo irlandés contiene “Linger” y “Dreams”, dos de sus canciones más queridas.'}
 ];
 const songStories=[
  {a:'The Police',t:'Every Breath You Take',y:'1983',d:'Aunque a menudo se interpreta como una canción romántica, Sting explicó que su letra habla de vigilancia, celos y obsesión. Apareció en el álbum “Synchronicity”.'},
@@ -495,15 +564,53 @@ const songStories=[
  {a:'Bryan Adams',t:'(Everything I Do) I Do It for You',y:'1991',d:'Compuesta para la película “Robin Hood: Prince of Thieves”, fue un éxito mundial y una de las baladas más populares de los 90.'},
  {a:'The Verve',t:'Bitter Sweet Symphony',y:'1997',d:'Su arreglo de cuerdas y su reflexión sobre la vida cotidiana la convirtieron en un himno del britpop.'},
  {a:'Juanes',t:'A Dios le Pido',y:'2002',d:'Una de las canciones que consolidó la carrera internacional de Juanes, mezclando pop rock con ritmos latinos.'},
- {a:'Lenny Kravitz',t:'Again',y:'2000',d:'Una balada de rock incluida en “Greatest Hits”, reconocida por su melodía y su interpretación vocal.'}
+ {a:'Lenny Kravitz',t:'Again',y:'2000',d:'Una balada de rock incluida en “Greatest Hits”, reconocida por su melodía y su interpretación vocal.'},
+ {a:'Madonna',t:'Like a Prayer',y:'1989',d:'La canción que dio título a su cuarto álbum mezcló pop con elementos de gospel y se convirtió en uno de los momentos más importantes de su carrera.'},
+ {a:'U2',t:'With or Without You',y:'1987',d:'Incluida en “The Joshua Tree”, fue el primer número uno de U2 en Estados Unidos y destaca por su crescendo contenido y atmosférico.'},
+ {a:'The Cure',t:'Friday I’m in Love',y:'1992',d:'Robert Smith escribió esta canción luminosa que contrasta con el tono más oscuro de buena parte del repertorio de The Cure.'},
+ {a:'Depeche Mode',t:'Enjoy the Silence',y:'1990',d:'Martin Gore escribió originalmente una balada lenta; la producción electrónica y el ritmo añadido transformaron la canción en un clásico bailable.'},
+ {a:'Tears for Fears',t:'Everybody Wants to Rule the World',y:'1985',d:'La canción apareció en “Songs from the Big Chair” y combinó una melodía luminosa con una letra sobre poder y control.'},
+ {a:'George Michael',t:'Careless Whisper',y:'1984',d:'El memorable solo de saxofón acompaña una historia de culpa y desamor. George Michael coescribió la canción cuando aún era adolescente.'},
+ {a:'Cyndi Lauper',t:'Time After Time',y:'1983',d:'Cyndi Lauper coescribió esta balada junto a Rob Hyman; su letra habla de acompañar a alguien incluso en momentos difíciles.'},
+ {a:'a-ha',t:'The Sun Always Shines on T.V.',y:'1985',d:'Publicada después de “Take On Me”, llevó el sonido synth-pop de a-ha a un tono más dramático y cinematográfico.'},
+ {a:'INXS',t:'Never Tear Us Apart',y:'1987',d:'La balada de “Kick” destaca por su arreglo de metales y una interpretación vocal de Michael Hutchence que se volvió emblemática.'},
+ {a:'The Bangles',t:'Eternal Flame',y:'1989',d:'Sus integrantes participaron en la composición de esta balada, que se convirtió en uno de los mayores éxitos del grupo.'},
+ {a:'Bryan Ferry',t:'Slave to Love',y:'1985',d:'Incluida en “Boys and Girls”, su producción elegante y su ritmo pausado la convirtieron en una de las canciones más reconocibles de Ferry.'},
+ {a:'Guns N’ Roses',t:'November Rain',y:'1991',d:'La extensa balada de “Use Your Illusion I” incorporó arreglos orquestales y un memorable solo de guitarra de Slash.'},
+ {a:'Metallica',t:'Nothing Else Matters',y:'1991',d:'James Hetfield escribió inicialmente la canción para sí mismo; terminó incluida en “Metallica” y se convirtió en una de sus baladas más conocidas.'},
+ {a:'No Doubt',t:'Don’t Speak',y:'1996',d:'Gwen Stefani y Eric Stefani trabajaron en la canción, que tomó un nuevo significado tras el final de la relación entre Gwen y Tony Kanal.'},
+ {a:'Natalie Imbruglia',t:'Torn',y:'1997',d:'La versión de Natalie Imbruglia popularizó internacionalmente una canción que ya había sido grabada por otros artistas.'},
+ {a:'The Verve',t:'The Drugs Don’t Work',y:'1997',d:'Richard Ashcroft escribió esta balada incluida en “Urban Hymns”, álbum que también contiene “Bitter Sweet Symphony”.'},
+ {a:'Oasis',t:'Don’t Look Back in Anger',y:'1996',d:'Noel Gallagher puso la voz principal en esta canción de “(What’s the Story) Morning Glory?”, convertida en himno del público.'},
+ {a:'Radiohead',t:'Karma Police',y:'1997',d:'Incluida en “OK Computer”, combina una melodía de piano reconocible con una atmósfera que se va descomponiendo hacia el final.'},
+ {a:'Alanis Morissette',t:'Ironic',y:'1995',d:'La canción de “Jagged Little Pill” juega con situaciones que parecen irónicas; su letra dio pie a debates sobre el significado de la ironía.'},
+ {a:'The Wallflowers',t:'One Headlight',y:'1996',d:'Jakob Dylan escribió esta canción de “Bringing Down the Horse”, que ganó dos premios Grammy y fue un gran éxito en la radio.'},
+ {a:'Sheryl Crow',t:'All I Wanna Do',y:'1993',d:'La canción nació a partir de un poema de Wyn Cooper y se convirtió en el sencillo que llevó a Sheryl Crow al gran público.'},
+ {a:'Coldplay',t:'The Scientist',y:'2002',d:'Chris Martin explicó que la canción nació de su deseo de escribir una pieza sencilla al piano; forma parte de “A Rush of Blood to the Head”.'},
+ {a:'Keane',t:'Somewhere Only We Know',y:'2004',d:'El sencillo de debut de Keane se construyó alrededor del piano y se convirtió en una de las canciones británicas más reconocibles de los 2000.'},
+ {a:'Evanescence',t:'Bring Me to Life',y:'2003',d:'La canción que abrió “Fallen” combinó la voz de Amy Lee con guitarras y una participación vocal invitada de Paul McCoy.'},
+ {a:'Juanes',t:'La camisa negra',y:'2004',d:'Incluida en “Mi sangre”, mezcló pop rock con ritmos latinos y se convirtió en uno de los mayores éxitos internacionales del artista colombiano.'},
+ {a:'Dido',t:'Thank You',y:'1999/2000',d:'La canción apareció en “No Angel” y ganó popularidad mundial después de que Eminem utilizara un fragmento vocal en “Stan”.'},
+ {a:'The Strokes',t:'Last Nite',y:'2001',d:'El sencillo de “Is This It” ayudó a definir el regreso del rock de guitarras neoyorquino a comienzos de los 2000.'},
+ {a:'Maroon 5',t:'This Love',y:'2002',d:'El sencillo de “Songs About Jane” mezcló pop, funk y rock, y fue decisivo para presentar al grupo internacionalmente.'},
+ {a:'The Fray',t:'How to Save a Life',y:'2005',d:'Isaac Slade explicó que la canción surgió de su experiencia intentando ayudar a un joven; el tema dio título al segundo álbum del grupo.'}
 ];
-let featureIndex=Math.floor(Math.random()*featuredAlbums.length);
-let storyIndex=Math.floor(Math.random()*songStories.length);
-function nextRandomIndex(current,length){
- if(length<2)return 0;
- let next=current;
- while(next===current)next=Math.floor(Math.random()*length);
- return next;
+function shuffledDeck(length){
+ const deck=Array.from({length},(_,i)=>i);
+ for(let i=deck.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[deck[i],deck[j]]=[deck[j],deck[i]];}
+ return deck;
+}
+let albumDeck=shuffledDeck(featuredAlbums.length),albumDeckPos=0;
+let storyDeck=shuffledDeck(songStories.length),storyDeckPos=0;
+let featureIndex=albumDeck[albumDeckPos++];
+let storyIndex=storyDeck[storyDeckPos++];
+function nextFromDeck(deckName){
+ if(deckName==='album'){
+  if(albumDeckPos>=albumDeck.length){const previous=albumDeck[albumDeck.length-1];albumDeck=shuffledDeck(featuredAlbums.length);if(albumDeck.length>1&&albumDeck[0]===previous){[albumDeck[0],albumDeck[1]]=[albumDeck[1],albumDeck[0]];}albumDeckPos=0;}
+  return albumDeck[albumDeckPos++];
+ }
+ if(storyDeckPos>=storyDeck.length){const previous=storyDeck[storyDeck.length-1];storyDeck=shuffledDeck(songStories.length);if(storyDeck.length>1&&storyDeck[0]===previous){[storyDeck[0],storyDeck[1]]=[storyDeck[1],storyDeck[0]];}storyDeckPos=0;}
+ return storyDeck[storyDeckPos++];
 }
 async function setFeatureArtwork(artist,title,img){
  img.src='logo.png';
@@ -534,8 +641,8 @@ function showFeatures(){
  const title=document.createElement('strong');title.textContent=story.a+' · '+story.t+' ('+story.y+')';
  const text=document.createElement('p');text.textContent=story.d;
  storyEl.append(title,text);
- featureIndex=nextRandomIndex(featureIndex,featuredAlbums.length);
- storyIndex=nextRandomIndex(storyIndex,songStories.length);
+ featureIndex=nextFromDeck('album');
+ storyIndex=nextFromDeck('story');
 }
 showNews();showFeatures();setInterval(()=>{showNews();showFeatures();},90000);
 
