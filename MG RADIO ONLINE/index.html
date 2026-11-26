@@ -44,7 +44,10 @@ main{padding:34px 0 48px}.hero{text-align:center;margin-bottom:24px}.eyebrow{fon
 .layout{display:grid;grid-template-columns:minmax(210px,.72fr) minmax(390px,1.35fr) minmax(260px,.9fr);gap:18px;align-items:start}.panel{border:1px solid rgba(225,220,220,.9);border-radius:20px;background:rgba(255,255,255,.94);box-shadow:0 16px 42px rgba(40,20,20,.075)}.player-panel{padding:26px}.live-row{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:20px}.live-pill{display:inline-flex;align-items:center;gap:8px;background:#fff1f1;color:var(--red);padding:7px 11px;border-radius:30px;font-size:11px;font-weight:850;letter-spacing:.1em}.dot{width:8px;height:8px;border-radius:50%;background:var(--red);box-shadow:0 0 0 4px #f9dada}.quality{font-size:11px;color:var(--muted)}.listen-title{text-align:center;font-size:20px;margin:0 0 3px}.listen-sub{text-align:center;color:var(--muted);font-size:13px;margin:0 0 18px}.audio-wrap{background:var(--soft);border-radius:14px;padding:18px}.audio-wrap audio{display:block;width:100%;height:42px}
 .broadcast-player{display:flex;align-items:center;gap:16px;min-height:78px;padding:12px 16px;border-radius:40px;background:linear-gradient(115deg,#242b30 0%,#171d21 100%);box-shadow:0 9px 20px rgba(0,0,0,.2),inset 0 1px 0 rgba(255,255,255,.08);color:#fff}
 .broadcast-player audio{display:none}.broadcast-player{flex-wrap:wrap}.broadcast-play{width:70px;height:58px;flex:none;border:0;border-radius:20px;background:linear-gradient(145deg,#f12b32,#c91019);color:#fff;display:grid;place-items:center;cursor:pointer;box-shadow:0 4px 12px rgba(215,25,32,.35);transition:transform .16s,filter .16s}.broadcast-play:hover{filter:brightness(1.1);transform:translateY(-1px)}.broadcast-play svg{width:28px;height:28px;fill:currentColor}.broadcast-play .pause-icon{display:none}.broadcast-player.is-playing .broadcast-play .play-icon{display:none}.broadcast-player.is-playing .broadcast-play .pause-icon{display:block}
-.broadcast-time{font-size:13px;font-variant-numeric:tabular-nums;color:#f5f6f7;white-space:nowrap;min-width:47px;padding-left:2px}.broadcast-volume{margin-left:auto;display:flex;align-items:center;gap:9px;min-width:0;padding-left:13px;border-left:1px solid rgba(255,255,255,.22)}.broadcast-mute{width:34px;height:34px;flex:none;border:0;background:transparent;color:#fff;display:grid;place-items:center;cursor:pointer}.broadcast-mute svg{width:24px;height:24px;fill:currentColor}.broadcast-volume input{width:86px;accent-color:#ed252d;cursor:pointer}
+.broadcast-time{font-size:13px;font-variant-numeric:tabular-nums;color:#f5f6f7;white-space:nowrap;min-width:47px;padding-left:2px}.broadcast-volume{margin-left:auto;display:flex;align-items:center;gap:9px;min-width:0;padding-left:13px;border-left:1px solid rgba(255,255,255,.22)}.broadcast-mute{width:34px;height:34px;flex:none;border:0;background:transparent;color:#fff;display:grid;place-items:center;cursor:pointer}.broadcast-mute{position:relative}.broadcast-mute svg{width:24px;height:24px;fill:currentColor}.broadcast-mute.is-muted{color:#ff6268}.broadcast-mute.is-muted:after{content:"";position:absolute;width:27px;height:2.5px;left:4px;top:16px;transform:rotate(-42deg);border-radius:2px;background:#ff6268;box-shadow:0 0 2px #171a1d}.mute-status{display:none;color:#ff6268;font-size:8px;font-weight:900;letter-spacing:.09em;line-height:1}.mute-status.visible{display:block}.broadcast-volume input{width:86px;accent-color:#ed252d;cursor:pointer}
+.broadcast-livebar{position:relative;flex:0 0 100%;height:5px;margin:1px 4px 2px;border-radius:8px;background:linear-gradient(180deg,rgba(255,255,255,.28),rgba(255,255,255,.12));box-shadow:inset 0 1px 2px rgba(0,0,0,.48),0 1px 0 rgba(255,255,255,.06);overflow:visible}
+.broadcast-livebar span{position:relative;display:block;width:100%;height:100%;border-radius:8px;background:linear-gradient(180deg,#f6f6f6,#c8cdd0);box-shadow:inset 0 1px 0 rgba(255,255,255,.55);animation:none}
+.broadcast-livebar span:after{content:"";position:absolute;right:-1px;top:50%;width:11px;height:11px;transform:translate(0,-50%);border-radius:50%;background:linear-gradient(180deg,#fff,#c9cdd0);border:1px solid #aeb4b8;box-shadow:0 1px 3px rgba(0,0,0,.55)}
 .rds-strip{flex:0 0 100%;min-width:0;display:flex;align-items:center;gap:9px;padding:7px 3px 1px;border-top:1px solid rgba(255,255,255,.14);overflow:hidden}
 .rds-tag{flex:none;color:#ff6268;font-size:9px;font-weight:950;letter-spacing:.16em}
 .rds-window{min-width:0;overflow:hidden;white-space:nowrap;color:#f3f5f6;font-size:10px;font-weight:800;letter-spacing:.12em}
@@ -128,7 +131,8 @@ main{padding:34px 0 48px}.hero{text-align:center;margin-bottom:24px}.eyebrow{fon
  <audio id="player" preload="none" playsinline><source src="https://stream.zeno.fm/0m42pr5q4ehvv" type="audio/mpeg">Tu navegador no admite audio HTML5.</audio>
  <button class="broadcast-play" id="broadcastPlay" type="button" aria-label="Reproducir MG Radio Online" aria-pressed="false"><svg class="play-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.8c0-.8.9-1.3 1.6-.9l11 7.2a1.1 1.1 0 0 1 0 1.8l-11 7.2c-.7.4-1.6-.1-1.6-.9V4.8z"/></svg><svg class="pause-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4h4.5v16H6zM13.5 4H18v16h-4.5z"/></svg></button>
  <span class="broadcast-time" id="broadcastTime" aria-live="off">00:00</span>
- <div class="broadcast-volume"><button class="broadcast-mute" id="broadcastMute" type="button" aria-label="Silenciar" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9v6h4l5 4V5L7 9H3zm12.5 3a3.5 3.5 0 0 0-2-3.16v6.32a3.5 3.5 0 0 0 2-3.16zm-2-8.5v2.06a7 7 0 0 1 0 12.88v2.06a9 9 0 0 0 0-17z"/></svg></button><input id="broadcastVolume" type="range" min="0" max="1" step="0.01" value="0.85" aria-label="Volumen"></div>
+ <div class="broadcast-volume"><button class="broadcast-mute" id="broadcastMute" type="button" aria-label="Silenciar" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9v6h4l5 4V5L7 9H3zm12.5 3a3.5 3.5 0 0 0-2-3.16v6.32a3.5 3.5 0 0 0 2-3.16zm-2-8.5v2.06a7 7 0 0 1 0 12.88v2.06a9 9 0 0 0 0-17z"/></svg></button><span class="mute-status" id="muteStatus" aria-live="polite">MUTE</span><input id="broadcastVolume" type="range" min="0" max="1" step="0.01" value="0.85" aria-label="Volumen"></div>
+ <div class="broadcast-livebar" aria-hidden="true"><span></span></div>
  <div class="rds-strip" aria-label="Mensajes de la emisora"><span class="rds-tag">RDS</span><div class="rds-window"><span id="rdsMessage">EN VIVO · MG RADIO ONLINE</span></div></div>
 </div>
 <div class="now-title"><div class="now-label">Ahora suena</div><div class="song" id="nowPlaying" aria-live="polite">Conectando con la emisora…</div></div>
@@ -406,9 +410,10 @@ const broadcastPlay=document.getElementById('broadcastPlay');
 const broadcastTime=document.getElementById('broadcastTime');
 const broadcastMute=document.getElementById('broadcastMute');
 const broadcastVolume=document.getElementById('broadcastVolume');
+const muteStatus=document.getElementById('muteStatus');
 let playbackStartedAt=0,playbackElapsed=0,broadcastClock=null;
 function formatElapsed(ms){const total=Math.floor(ms/1000);const h=Math.floor(total/3600),m=Math.floor((total%3600)/60),sec=total%60;return h?String(h).padStart(2,'0')+':'+String(m).padStart(2,'0')+':'+String(sec).padStart(2,'0'):String(m).padStart(2,'0')+':'+String(sec).padStart(2,'0');}
-function paintBroadcast(){const active=!player.paused&&!player.ended;broadcastShell.classList.toggle('is-playing',active);broadcastPlay.setAttribute('aria-pressed',String(active));broadcastPlay.setAttribute('aria-label',active?'Pausar MG Radio Online':'Reproducir MG Radio Online');broadcastMute.setAttribute('aria-pressed',String(player.muted));broadcastMute.setAttribute('aria-label',player.muted?'Activar sonido':'Silenciar');broadcastTime.textContent=formatElapsed(playbackElapsed+(active?Date.now()-playbackStartedAt:0));}
+function paintBroadcast(){const active=!player.paused&&!player.ended;broadcastShell.classList.toggle('is-playing',active);broadcastPlay.setAttribute('aria-pressed',String(active));broadcastPlay.setAttribute('aria-label',active?'Pausar MG Radio Online':'Reproducir MG Radio Online');broadcastMute.setAttribute('aria-pressed',String(player.muted));broadcastMute.setAttribute('aria-label',player.muted?'Activar sonido':'Silenciar');broadcastMute.classList.toggle('is-muted',player.muted);muteStatus.classList.toggle('visible',player.muted);broadcastTime.textContent=formatElapsed(playbackElapsed+(active?Date.now()-playbackStartedAt:0));}
 broadcastPlay.addEventListener('click',()=>{if(player.paused){const promise=player.play();if(promise&&promise.catch)promise.catch(()=>{broadcastTime.textContent='Pulsa para escuchar';});}else player.pause();});
 player.addEventListener('play',()=>{playbackStartedAt=Date.now();if(broadcastClock===null)broadcastClock=setInterval(paintBroadcast,500);paintBroadcast();});
 player.addEventListener('pause',()=>{if(playbackStartedAt){playbackElapsed+=Date.now()-playbackStartedAt;playbackStartedAt=0;}if(broadcastClock!==null){clearInterval(broadcastClock);broadcastClock=null;}paintBroadcast();});
@@ -488,16 +493,17 @@ const newsBank={
   ]
 };
 
-const newsEl=document.getElementById('newsItems');const albumEl=document.getElementById('albumFeature');const storyEl=document.getElementById('songStory');const now=new Date();const mm=String(now.getMonth()+1).padStart(2,'0'),dd=String(now.getDate()).padStart(2,'0');const key=mm+'-'+dd;const daySeed=Math.floor(new Date(now.getFullYear(),now.getMonth(),now.getDate()).getTime()/86400000);const todayItems=newsBank[key]||[];let newsIndex=todayItems.length?daySeed%todayItems.length:0;
-function showNews(){
- let item;
- if(todayItems.length){item=todayItems[newsIndex%todayItems.length];newsIndex=(newsIndex+1)%todayItems.length;}
- else{
-  const story=songStories[daySeed%songStories.length];
-  item={k:'CANCIÓN DE NUESTRA MEMORIA · '+story.y,t:story.t+' — '+story.a,d:story.d,s:'MG Radio Online · Archivo musical'};
- }
- const article=document.createElement('article');article.className='news-item';const kicker=document.createElement('div');kicker.className='news-kicker';kicker.textContent=item.k;const title=document.createElement('h4');title.textContent=item.t;const desc=document.createElement('p');desc.textContent=item.d;const source=document.createElement('div');source.className='news-date';source.textContent=item.s;article.append(kicker,title,desc,source);newsEl.replaceChildren(article);
-}
+const evergreen=[
+ {k:'CURIOSIDAD · POP ROCK',t:'Las canciones también cuentan historias',d:'En MG Music News recuperamos los detalles, colaboraciones y anécdotas detrás de los temas que forman parte de nuestra memoria musical.',s:'MG Radio Online'},
+ {k:'ESPECIAL · LOS 80',t:'Una década de grandes himnos',d:'Synth-pop, pop rock, baladas y grandes producciones marcaron una década que sigue sonando en la radio de hoy.',s:'MG Radio Online'},
+ {k:'ESPECIAL · LOS 90',t:'La década de los contrastes',d:'Britpop, grunge, rock alternativo y pop convivieron en una década de enorme diversidad musical.',s:'MG Radio Online'},
+ {k:'ESPECIAL · LOS 2000',t:'Nuevos sonidos, grandes canciones',d:'El pop rock de estadio, el indie y la música electrónica ampliaron el paisaje musical de los primeros años del siglo XXI.',s:'MG Radio Online'},
+ {k:'¿SABÍAS QUE…?',t:'Una canción puede tener varias versiones',d:'Versiones acústicas, directos y remezclas permiten descubrir una misma canción desde perspectivas muy distintas.',s:'MG Radio Online'},
+ {k:'ESPECIAL · POP ALTERNATIVO',t:'Cuando las guitarras marcaron una época',d:'Del sonido británico al rock alternativo estadounidense, los 90 dejaron discos y canciones que siguen influyendo en nuevas generaciones.',s:'MG Radio Online'},
+ {k:'ESPECIAL · BALADAS',t:'Canciones que permanecen',d:'Grandes voces y melodías inolvidables hicieron de muchas baladas de los 80, 90 y 2000 parte de la banda sonora de varias generaciones.',s:'MG Radio Online'},
+ {k:'MG RADIO · NUESTRA SELECCIÓN',t:'De los clásicos a los sonidos de hoy',d:'Una selección que conecta décadas de pop, rock, alternative y baladas en inglés y español.',s:'MG Radio Online'}
+];
+const newsEl=document.getElementById('newsItems');const albumEl=document.getElementById('albumFeature');const storyEl=document.getElementById('songStory');const now=new Date();const mm=String(now.getMonth()+1).padStart(2,'0'),dd=String(now.getDate()).padStart(2,'0');const key=mm+'-'+dd;const daySeed=Math.floor(new Date(now.getFullYear(),now.getMonth(),now.getDate()).getTime()/86400000);const todayItems=newsBank[key]||[];
 const featuredAlbums=[
  {a:'Bon Jovi',t:'Slippery When Wet',y:'1986',d:'Un álbum decisivo del hard rock melódico de los 80, con himnos como “Livin’ on a Prayer” y “You Give Love a Bad Name”.'},
  {a:'Roxette',t:'Look Sharp!',y:'1988',d:'El disco que impulsó al dúo sueco internacionalmente con “The Look” y “Listen to Your Heart”.'},
@@ -595,6 +601,11 @@ const songStories=[
  {a:'Maroon 5',t:'This Love',y:'2002',d:'El sencillo de “Songs About Jane” mezcló pop, funk y rock, y fue decisivo para presentar al grupo internacionalmente.'},
  {a:'The Fray',t:'How to Save a Life',y:'2005',d:'Isaac Slade explicó que la canción surgió de su experiencia intentando ayudar a un joven; el tema dio título al segundo álbum del grupo.'}
 ];
+const dailyStory=songStories[daySeed%songStories.length];
+const dailyStoryItem={k:'CANCIÓN DE NUESTRA MEMORIA · '+dailyStory.y,t:dailyStory.t+' — '+dailyStory.a,d:dailyStory.d,s:'MG Radio Online · Archivo musical'};
+const dailyPool=[...todayItems,dailyStoryItem,...evergreen];
+let newsIndex=dailyPool.length?daySeed%dailyPool.length:0;
+function showNews(){if(!dailyPool.length)return;const item=dailyPool[newsIndex%dailyPool.length];const article=document.createElement('article');article.className='news-item';const kicker=document.createElement('div');kicker.className='news-kicker';kicker.textContent=item.k;const title=document.createElement('h4');title.textContent=item.t;const desc=document.createElement('p');desc.textContent=item.d;const source=document.createElement('div');source.className='news-date';source.textContent=item.s;article.append(kicker,title,desc,source);newsEl.replaceChildren(article);newsIndex=(newsIndex+1)%dailyPool.length;}
 function shuffledDeck(length){
  const deck=Array.from({length},(_,i)=>i);
  for(let i=deck.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[deck[i],deck[j]]=[deck[j],deck[i]];}
@@ -644,7 +655,7 @@ function showFeatures(){
  featureIndex=nextFromDeck('album');
  storyIndex=nextFromDeck('story');
 }
-showNews();showFeatures();setInterval(()=>{showNews();showFeatures();},90000);
+showNews();showFeatures();setInterval(showNews,15000);setInterval(showFeatures,90000);
 
 // Tiempo de Elche y Mene Grande mediante Open-Meteo. Actualización cada 15 minutos.
 const weatherPlaces=[
