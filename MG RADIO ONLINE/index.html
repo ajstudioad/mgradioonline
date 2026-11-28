@@ -603,9 +603,62 @@ const songStories=[
 ];
 const dailyStory=songStories[daySeed%songStories.length];
 const dailyStoryItem={k:'CANCIÓN DE NUESTRA MEMORIA · '+dailyStory.y,t:dailyStory.t+' — '+dailyStory.a,d:dailyStory.d,s:'MG Radio Online · Archivo musical'};
-const dailyPool=[...todayItems,dailyStoryItem,...evergreen];
+// Calendario anual: consulta efemérides de la fecha actual en el archivo On This Day de Wikipedia.
+// El banco local conserva prioridad; el archivo externo amplía la cobertura a los 365 días.
+let dailyPool=[...todayItems,dailyStoryItem,...evergreen];
 let newsIndex=dailyPool.length?daySeed%dailyPool.length:0;
 function showNews(){if(!dailyPool.length)return;const item=dailyPool[newsIndex%dailyPool.length];const article=document.createElement('article');article.className='news-item';const kicker=document.createElement('div');kicker.className='news-kicker';kicker.textContent=item.k;const title=document.createElement('h4');title.textContent=item.t;const desc=document.createElement('p');desc.textContent=item.d;const source=document.createElement('div');source.className='news-date';source.textContent=item.s;article.append(kicker,title,desc,source);newsEl.replaceChildren(article);newsIndex=(newsIndex+1)%dailyPool.length;}
+function isMusicHistoryEntry(entry,kind){
+ const page=(entry.pages||[]).map(p=>[p.title,p.description,p.extract].filter(Boolean).join(' ')).join(' ');
+ const text=[entry.text,page].join(' ').toLowerCase();
+ const musicTerms=/\b(singer|songwriter|musician|band|rock|pop|music|musical|guitarist|vocalist|composer|recording|album|concert|orchestra|symphony|rapper|drummer|bassist|pianist|violinist|opera|jazz|blues|punk|metal|disco|grammy|eurovision|billboard|chart|single|record label|music video|festival|tour)\b/;
+ if(!musicTerms.test(text))return false;
+ if(kind==='births'||kind==='deaths')return /\b(singer|songwriter|musician|guitarist|vocalist|composer|rapper|drummer|bassist|pianist|violinist|conductor|producer|dj|rocker|bandleader)\b/.test(text);
+ return true;
+}
+async function loadDateMusicHistory(){
+ const url='https://api.wikimedia.org/feed/v1/wikipedia/en/onthisday/all/'+mm+'/'+dd;
+ try{
+  const response=await fetch(url,{headers:{'Accept':'application/json'}});
+  if(!response.ok)throw new Error('Archivo de efemérides no disponible');
+  const data=await response.json();
+  const remote=[];
+  for(const kind of ['events','births','deaths']){
+   for(const entry of (data[kind]||[])){
+    if(!isMusicHistoryEntry(entry,kind))continue;
+    const page=(entry.pages||[]).find(p=>p.title)||{};
+    const name=(page.title||'').replace(/_/g,' ');
+    const year=entry.year||'';
+    if(!name&&!entry.text)continue;
+    let title='',description='',label='EFEMÉRIDE MUSICAL';
+    if(kind==='births'){
+     label='NACIMIENTO MUSICAL';
+     title='Nace '+(name||'una figura de la música');
+     description='En '+year+' nació '+(name||'esta figura musical')+'. Su trayectoria forma parte de la historia de la música.';
+    }else if(kind==='deaths'){
+     label='EN LA MEMORIA';
+     title='Fallece '+(name||'una figura de la música');
+     description='En '+year+' falleció '+(name||'esta figura musical')+'; recordamos su aportación a la historia de la música.';
+    }else{
+     title=name||'Un acontecimiento musical';
+     description='En '+year+' se registró este acontecimiento relacionado con la música.';
+    }
+    remote.push({k:label+' · '+year,t:title,d:description,s:'Archivo histórico de Wikipedia · On This Day'});
+    if(remote.length>=8)break;
+   }
+   if(remote.length>=8)break;
+  }
+  if(remote.length){
+   const seen=new Set(dailyPool.map(item=>(item.k+'|'+item.t).toLowerCase()));
+   const fresh=remote.filter(item=>!seen.has((item.k+'|'+item.t).toLowerCase()));
+   dailyPool=[...todayItems,...fresh,dailyStoryItem,...evergreen];
+   newsIndex=0;
+   showNews();
+  }
+ }catch(error){
+  // Si el archivo externo no responde, siguen funcionando las efemérides locales y la rotación existente.
+ }
+}
 function shuffledDeck(length){
  const deck=Array.from({length},(_,i)=>i);
  for(let i=deck.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[deck[i],deck[j]]=[deck[j],deck[i]];}
@@ -655,7 +708,7 @@ function showFeatures(){
  featureIndex=nextFromDeck('album');
  storyIndex=nextFromDeck('story');
 }
-showNews();showFeatures();setInterval(showNews,15000);setInterval(showFeatures,90000);
+showNews();loadDateMusicHistory();showFeatures();setInterval(showNews,15000);setInterval(showFeatures,90000);
 
 // Tiempo de Elche y Mene Grande mediante Open-Meteo. Actualización cada 15 minutos.
 const weatherPlaces=[
