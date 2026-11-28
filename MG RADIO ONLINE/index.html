@@ -490,6 +490,12 @@ const newsBank={
   '11-23':[
     {k:'UN DÍA COMO HOY · 1993',t:'Guns N’ Roses publica “The Spaghetti Incident?”',d:'El álbum de versiones de la banda salió el 23 de noviembre de 1993.',s:'Efemérides musicales'},
     {k:'UN DÍA COMO HOY · 1999',t:'Metallica publica “S&M”',d:'El álbum en directo junto a la Orquesta Sinfónica de San Francisco se publicó el 23 de noviembre de 1999.',s:'Efemérides musicales'}
+  ],
+  '11-28':[
+    {k:'UN DÍA COMO HOY · 1992',t:'Whitney Houston inicia una histórica semana en el número uno',d:'El 28 de noviembre de 1992, “I Will Always Love You” comenzó una permanencia de 14 semanas en el primer puesto del Billboard Hot 100.',s:'This Day in Music'},
+    {k:'UN DÍA COMO HOY · 1974',t:'John Lennon comparte escenario con Elton John',d:'Lennon hizo una de sus últimas apariciones en directo en el Madison Square Garden, donde interpretó varias canciones junto a Elton John.',s:'This Day in Music'},
+    {k:'UN DÍA COMO HOY · 1967',t:'The Beatles graban su último disco navideño para los clubes de fans',d:'El grupo grabó “Christmas Time (Is Here Again)”, una pieza especial que enviaba mensajes y música a sus seguidores.',s:'This Day in Music'},
+    {k:'UN DÍA COMO HOY · 2000',t:'Madonna ofrece un concierto especial en Londres',d:'Madonna actuó en la Brixton Academy, en su primer concierto británico en más de siete años.',s:'This Day in Music'}
   ]
 };
 
@@ -503,7 +509,7 @@ const evergreen=[
  {k:'ESPECIAL · BALADAS',t:'Canciones que permanecen',d:'Grandes voces y melodías inolvidables hicieron de muchas baladas de los 80, 90 y 2000 parte de la banda sonora de varias generaciones.',s:'MG Radio Online'},
  {k:'MG RADIO · NUESTRA SELECCIÓN',t:'De los clásicos a los sonidos de hoy',d:'Una selección que conecta décadas de pop, rock, alternative y baladas en inglés y español.',s:'MG Radio Online'}
 ];
-const newsEl=document.getElementById('newsItems');const albumEl=document.getElementById('albumFeature');const storyEl=document.getElementById('songStory');const now=new Date();const mm=String(now.getMonth()+1).padStart(2,'0'),dd=String(now.getDate()).padStart(2,'0');const key=mm+'-'+dd;const daySeed=Math.floor(new Date(now.getFullYear(),now.getMonth(),now.getDate()).getTime()/86400000);const todayItems=newsBank[key]||[];
+const newsEl=document.getElementById('newsItems');const albumEl=document.getElementById('albumFeature');const storyEl=document.getElementById('songStory');const now=new Date();const mm=String(now.getMonth()+1).padStart(2,'0'),dd=String(now.getDate()).padStart(2,'0');const key=mm+'-'+dd;const daySeed=Math.floor(new Date(now.getFullYear(),now.getMonth(),now.getDate()).getTime()/86400000);let todayItems=[...(newsBank[key]||[])];
 const featuredAlbums=[
  {a:'Bon Jovi',t:'Slippery When Wet',y:'1986',d:'Un álbum decisivo del hard rock melódico de los 80, con himnos como “Livin’ on a Prayer” y “You Give Love a Bad Name”.'},
  {a:'Roxette',t:'Look Sharp!',y:'1988',d:'El disco que impulsó al dúo sueco internacionalmente con “The Look” y “Listen to Your Heart”.'},
@@ -603,62 +609,15 @@ const songStories=[
 ];
 const dailyStory=songStories[daySeed%songStories.length];
 const dailyStoryItem={k:'CANCIÓN DE NUESTRA MEMORIA · '+dailyStory.y,t:dailyStory.t+' — '+dailyStory.a,d:dailyStory.d,s:'MG Radio Online · Archivo musical'};
-// Calendario anual: consulta efemérides de la fecha actual en el archivo On This Day de Wikipedia.
-// El banco local conserva prioridad; el archivo externo amplía la cobertura a los 365 días.
 let dailyPool=[...todayItems,dailyStoryItem,...evergreen];
 let newsIndex=dailyPool.length?daySeed%dailyPool.length:0;
 function showNews(){if(!dailyPool.length)return;const item=dailyPool[newsIndex%dailyPool.length];const article=document.createElement('article');article.className='news-item';const kicker=document.createElement('div');kicker.className='news-kicker';kicker.textContent=item.k;const title=document.createElement('h4');title.textContent=item.t;const desc=document.createElement('p');desc.textContent=item.d;const source=document.createElement('div');source.className='news-date';source.textContent=item.s;article.append(kicker,title,desc,source);newsEl.replaceChildren(article);newsIndex=(newsIndex+1)%dailyPool.length;}
-function isMusicHistoryEntry(entry,kind){
- const page=(entry.pages||[]).map(p=>[p.title,p.description,p.extract].filter(Boolean).join(' ')).join(' ');
- const text=[entry.text,page].join(' ').toLowerCase();
- const musicTerms=/\b(singer|songwriter|musician|band|rock|pop|music|musical|guitarist|vocalist|composer|recording|album|concert|orchestra|symphony|rapper|drummer|bassist|pianist|violinist|opera|jazz|blues|punk|metal|disco|grammy|eurovision|billboard|chart|single|record label|music video|festival|tour)\b/;
- if(!musicTerms.test(text))return false;
- if(kind==='births'||kind==='deaths')return /\b(singer|songwriter|musician|guitarist|vocalist|composer|rapper|drummer|bassist|pianist|violinist|conductor|producer|dj|rocker|bandleader)\b/.test(text);
- return true;
-}
-async function loadDateMusicHistory(){
- const url='https://api.wikimedia.org/feed/v1/wikipedia/en/onthisday/all/'+mm+'/'+dd;
- try{
-  const response=await fetch(url,{headers:{'Accept':'application/json'}});
-  if(!response.ok)throw new Error('Archivo de efemérides no disponible');
-  const data=await response.json();
-  const remote=[];
-  for(const kind of ['events','births','deaths']){
-   for(const entry of (data[kind]||[])){
-    if(!isMusicHistoryEntry(entry,kind))continue;
-    const page=(entry.pages||[]).find(p=>p.title)||{};
-    const name=(page.title||'').replace(/_/g,' ');
-    const year=entry.year||'';
-    if(!name&&!entry.text)continue;
-    let title='',description='',label='EFEMÉRIDE MUSICAL';
-    if(kind==='births'){
-     label='NACIMIENTO MUSICAL';
-     title='Nace '+(name||'una figura de la música');
-     description='En '+year+' nació '+(name||'esta figura musical')+'. Su trayectoria forma parte de la historia de la música.';
-    }else if(kind==='deaths'){
-     label='EN LA MEMORIA';
-     title='Fallece '+(name||'una figura de la música');
-     description='En '+year+' falleció '+(name||'esta figura musical')+'; recordamos su aportación a la historia de la música.';
-    }else{
-     title=name||'Un acontecimiento musical';
-     description='En '+year+' se registró este acontecimiento relacionado con la música.';
-    }
-    remote.push({k:label+' · '+year,t:title,d:description,s:'Archivo histórico de Wikipedia · On This Day'});
-    if(remote.length>=8)break;
-   }
-   if(remote.length>=8)break;
-  }
-  if(remote.length){
-   const seen=new Set(dailyPool.map(item=>(item.k+'|'+item.t).toLowerCase()));
-   const fresh=remote.filter(item=>!seen.has((item.k+'|'+item.t).toLowerCase()));
-   dailyPool=[...todayItems,...fresh,dailyStoryItem,...evergreen];
-   newsIndex=0;
-   showNews();
-  }
- }catch(error){
-  // Si el archivo externo no responde, siguen funcionando las efemérides locales y la rotación existente.
- }
-}
+// Efemérides musicales dinámicas: consulta los acontecimientos documentados del día en Wikipedia.
+const musicNames=['The Beatles','Beatles','Queen','Freddie Mercury','John Lennon','Paul McCartney','George Harrison','Ringo Starr','Bon Jovi','Jon Bon Jovi','Guns N Roses','Guns N’ Roses','Madonna','Michael Jackson','Prince','Phil Collins','Genesis','Lionel Richie','Whitney Houston','Bruce Springsteen','Bryan Adams','A-ha','Roxette','U2','Depeche Mode','Duran Duran','Tears for Fears','George Michael','Wham','Cyndi Lauper','Tina Turner','Dire Straits','The Police','Sting','David Bowie','Elton John','Billy Joel','Bee Gees','ABBA','The Rolling Stones','AC/DC','Metallica','Nirvana','Oasis','Radiohead','Coldplay','Avril Lavigne','Alanis Morissette','Shakira','Maná','Mana','Héroes del Silencio','Heroes del Silencio','Enrique Bunbury','Juanes','Fito Páez','Soda Stereo','Gustavo Cerati','Alejandro Sanz','La Oreja de Van Gogh','R.E.M.','Red Hot Chili Peppers','Aerosmith','Bryan Ferry','Annie Lennox','Eurythmics','The Cranberries','No Doubt','Green Day','Linkin Park','Evanescence','The Killers','Maroon 5','Sheryl Crow','Randy Newman','Randy Crawford','Lionel Richie','Simply Red','Chris de Burgh','Celine Dion','Mariah Carey','Backstreet Boys','Spice Girls','Take That','Britney Spears','Robbie Williams','Santana','Carlos Santana','The Corrs','Natalie Imbruglia','Alizée','Mecano','Hombres G','Los Prisioneros','La Unión','Los Enanitos Verdes','Sandro'];
+const musicClues=['album','single','song','singer','band','concert','recorded','released','music','musician','chart','hit','guitarist','vocalist','cantante','grupo','banda','canción','cancion','álbum','album','concierto','grabó','grabo','publicó','publico','lanzó','lanzo'];
+function isRelevantMusicEvent(entry,category){const text=((entry.text||'')+' '+(entry.pages||[]).map(p=>(p.title||'')+' '+(p.extract||'')).join(' ')).toLowerCase();const named=musicNames.some(n=>text.includes(n.toLowerCase()));const musical=musicClues.some(w=>text.includes(w));return named||musical&&['events','births','deaths'].includes(category)&&/(music|musician|singer|song|band|rock|pop|cantante|músic|grupo|banda)/i.test(text);}
+async function loadDailyMusicHistory(){try{const r=await fetch('https://en.wikipedia.org/api/rest_v1/feed/onthisday/all/'+mm+'/'+dd,{headers:{'accept':'application/json'}});if(!r.ok)throw new Error('Wikipedia API '+r.status);const data=await r.json();const found=[];for(const category of ['events','births','deaths']){for(const entry of (data[category]||[])){if(!isRelevantMusicEvent(entry,category))continue;const page=(entry.pages||[]).find(p=>p&&p.title);const year=entry.year?String(entry.year):'';const text=(entry.text||'').trim();const title=page?page.title.replace(/_/g,' '):'';const description=(page&&page.extract?String(page.extract).replace(/\s+/g,' ').slice(0,260):text);const headline=text||title;if(!headline)continue;const url=page&&page.content_urls&&page.content_urls.desktop&&page.content_urls.desktop.page?page.content_urls.desktop.page:'';found.push({k:(category==='births'?'NACIMIENTO MUSICAL':category==='deaths'?'RECUERDO MUSICAL':'UN DÍA COMO HOY')+(year?' · '+year:''),t:headline,d:description||('Acontecimiento musical documentado relacionado con '+title+'.'),s:'Fuente: Wikipedia · On this day'+(url?' · '+url:'')});}}const seen=new Set(todayItems.map(item=>item.t.toLowerCase()));const unique=found.filter(item=>{const k=item.t.toLowerCase();if(seen.has(k))return false;seen.add(k);return true;});if(unique.length){todayItems=[...todayItems,...unique];dailyPool=[...todayItems,dailyStoryItem,...evergreen];newsIndex=0;showNews();}}catch(error){console.warn('No se pudieron cargar las efemérides musicales dinámicas:',error);}}
+loadDailyMusicHistory();
 function shuffledDeck(length){
  const deck=Array.from({length},(_,i)=>i);
  for(let i=deck.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[deck[i],deck[j]]=[deck[j],deck[i]];}
@@ -708,7 +667,7 @@ function showFeatures(){
  featureIndex=nextFromDeck('album');
  storyIndex=nextFromDeck('story');
 }
-showNews();loadDateMusicHistory();showFeatures();setInterval(showNews,15000);setInterval(showFeatures,90000);
+showNews();showFeatures();setInterval(showNews,15000);setInterval(showFeatures,90000);
 
 // Tiempo de Elche y Mene Grande mediante Open-Meteo. Actualización cada 15 minutos.
 const weatherPlaces=[
